@@ -9,6 +9,7 @@ const HTTPSTATUSCODE = require("../../utils/httpStatusCode");
 
 const register = async (req, res, next) => {
   try {
+    console.log(req.body);
     const newUser = new User(req.body);
     const createdUser = newUser.save();
     return res.json({

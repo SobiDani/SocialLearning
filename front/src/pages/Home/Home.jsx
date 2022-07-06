@@ -10,10 +10,11 @@ const Home = () => {
         <div className='derechaHome'>
         <ul>
             <li>
-                <Link to='/...'>LOGIN</Link>
+
+                <Link to='/login'>LOG IN</Link>
             </li>
             <li>
-                <Link to='/...'>REGISTER</Link>
+                <Link to='/register'>REGISTER</Link>
             </li>
         </ul>
         <p>Find your programming mentor in less than 3 minutes</p>
