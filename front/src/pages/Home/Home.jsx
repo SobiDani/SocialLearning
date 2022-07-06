@@ -9,10 +9,10 @@ const Home = () => {
         <img className='LogoHome' src= "https://www.insightswebagency.com/wp-content/uploads/2021/10/webmaster-freelance.png" alt='Logo1'/>
         <ul>
             <li>
-                <Link to='/...'>LOG IN</Link>
+                <Link to='/login'>LOG IN</Link>
             </li>
             <li>
-                <Link to='/...'>REGISTER</Link>
+                <Link to='/register'>REGISTER</Link>
             </li>
         </ul>
     </div>

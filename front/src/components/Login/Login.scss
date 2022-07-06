@@ -1,0 +1,14 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Fascinate&family=Indie+Flower&family=Permanent+Marker&display=swap'); */
+
+.divForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1, h2{
+        color: #68bbf7;
+        gap: 6rem;
+        font-size: 4rem;
+    }
+}
