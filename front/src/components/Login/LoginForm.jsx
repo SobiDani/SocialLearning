@@ -13,7 +13,7 @@ const LoginForm = () => {
 
   const onSubmit = (formData) => {
     
-
+    console.log(formData);
     API.post("users/login", formData).then((res) => {
       console.log(res);
       localStorage.setItem("token", res.data.token);

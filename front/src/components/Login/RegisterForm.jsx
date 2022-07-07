@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { API } from "../../services/api";
 import "./Login.scss";
 import Form from 'react-bootstrap/Form'
+import { useNavigate } from "react-router-dom";
+
 
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
@@ -40,19 +42,22 @@ import Typography from '@mui/material/Typography';
 
 //STEP
 const RegisterForm = () => {
+  const navigate = useNavigate();
+
+
   const [indexStep, setindexStep] = useState(1);
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
     setindexStep(indexStep + 1);
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    
+
   };
 
   const handleBack = () => {
     setindexStep(indexStep - 1);
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    
+
   };
 
   const handleReset = () => {
@@ -60,29 +65,30 @@ const RegisterForm = () => {
   };
 
 
-//FORM
+  //FORM
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (formData) => {
     /* alert("holaaa"); */
     console.log(formData)
-    /* API.post("users/register", formData).then((res) => {
+    API.post("users/register", formData).then((res) => {
       console.log(res);
-    }); */
+      navigate("/login");
+    });
   };
 
- //GET HERRAMIENTAS
- const [tecnology, setTecnology] = useState([]);
+  //GET HERRAMIENTAS
+  const [tecnology, setTecnology] = useState([]);
 
- useEffect(() => {
-  const getTecnology = async () => {
-    const usersAPI = await API.get(`/herramientas`);
-    console.log(usersAPI);
-    setTecnology(usersAPI.data.Herramientas);
-    
-  };
-  getTecnology();
-}, []);
+  useEffect(() => {
+    const getTecnology = async () => {
+      const usersAPI = await API.get(`/herramientas`);
+      console.log(usersAPI);
+      setTecnology(usersAPI.data.Herramientas);
+
+    };
+    getTecnology();
+  }, []);
 
 
   return (
@@ -116,7 +122,7 @@ const RegisterForm = () => {
                     onClick={handleNext}
                     sx={{ mt: 1, mr: 1 }}
                   >
-                    {true === false ? 'Finish' : 'Continue'}
+                    Continue
                   </Button>
                   <Button
                     /*  disabled={true} */
@@ -144,7 +150,7 @@ const RegisterForm = () => {
                     value="Alumno"
                     {...register("rol")}
                   />
-                  
+
                   <Form.Check
                     name="custom-switch"
                     type="radio"
@@ -181,26 +187,51 @@ const RegisterForm = () => {
             </StepLabel>
             <StepContent>
               <Typography>
-              
-              {tecnology.map((tech) => (
-                <Form.Group className="mb-3" key={tech._id} controlId="formBasicswitch">
-                  <Form.Check
-                  type="switch"
-                  id="HerramientaSwitch"
-                  label={tech.name + " " + tech.description}
-                  value={tech._id}
-                  {...register("tecnologia")}
-                />
-                {/* <img style="width: 1rem;" ClassName="imgHerramientas" src={tech.ico} alt={tech.name}></img> */}
+                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                  <Form.Label>Añade una descripcion que te represente:</Form.Label>
+                  <Form.Control as="textarea" rows={3} {...register("description")} />
+                  {/* <img style="width: 1rem;" ClassName="imgHerramientas" src={tech.ico} alt={tech.name}></img> */}
                 </Form.Group>
-              ))}  
-              
-                  
-                
               </Typography>
               <Box sx={{ mb: 2 }}>
                 <div>
-                {indexStep === 3 ? (<Button type="submit">Registrar</Button>) : (<Button variant="contained" onClick={handleNext} sx={{ mt: 1, mr: 1 }}> Continue </Button>)}
+                  {indexStep === 4 ? (<Button type="submit">Registrar</Button>) : (<Button variant="contained" onClick={handleNext} sx={{ mt: 1, mr: 1 }}> Continue </Button>)}
+                  <Button
+                    onClick={handleBack}
+                    sx={{ mt: 1, mr: 1 }}
+                  >
+                    Back
+                  </Button>
+                </div>
+              </Box>
+            </StepContent>
+          </Step>
+          <Step>
+            <StepLabel>
+              <Typography variant="caption">paso 4</Typography>
+            </StepLabel>
+            <StepContent>
+              <Typography>
+
+                {tecnology.map((tech) => (
+                  <Form.Group className="mb-3" key={tech._id} controlId="formBasicswitch">
+                    <Form.Check
+                      type="switch"
+                      id="HerramientaSwitch"
+                      label={tech.name + " " + tech.description}
+                      value={tech._id}
+                      {...register("id_herramientas")}
+                    />
+                    {/* <img style="width: 1rem;" ClassName="imgHerramientas" src={tech.ico} alt={tech.name}></img> */}
+                  </Form.Group>
+                ))}
+
+
+
+              </Typography>
+              <Box sx={{ mb: 2 }}>
+                <div>
+                  {indexStep === 4 ? (<Button type="submit">Registrar</Button>) : (<Button variant="contained" onClick={handleNext} sx={{ mt: 1, mr: 1 }}> Continue </Button>)}
                   <Button
                     onClick={handleBack}
                     sx={{ mt: 1, mr: 1 }}
@@ -213,9 +244,9 @@ const RegisterForm = () => {
           </Step>
         </Stepper>
         <Paper square elevation={0} sx={{ p: 3 }}>
-          {indexStep === 3 ? (<></>) : (<Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>Reset</Button>)}
-          
-          
+          {indexStep === 4 ? (<></>) : (<Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>Reset</Button>)}
+
+
         </Paper>
       </Box>
     </form>

@@ -1,6 +1,6 @@
 import React from "react";
 import LoginForm from "./LoginForm";
-import { Link } from "react-router-dom";
+/* import { Link } from "react-router-dom"; */
 import "./Login.scss";
 
 const Login = () => {
