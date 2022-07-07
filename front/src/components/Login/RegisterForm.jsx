@@ -15,30 +15,11 @@ import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 
+import Figure from 'react-bootstrap/Figure'
+import { Carousel } from 'react-bootstrap';
 
-
-/* const steps = [
-  {
-    label: 'Alumno - Maestro',
-    description: `For each ad campaign that you create, you can control how much
-              you're willing to spend on clicks and conversions, which networks
-              and geographical locations you want your ads to show on, and more.`,
-  },
-  {
-    label: 'Create an ad group',
-    description:
-      'An ad group contains one or more ads which target a shared set of keywords.',
-  },
-  {
-    label: 'Create an ad',
-    description: `Try out different ad text to see what brings in the most customers,
-              and learn how to enhance your ads using features like ad extensions.
-              If you run into any problems with your ads, find out how to tell if
-              they're running and how to resolve approval issues.`,
-  },
-];
- */
-
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 //STEP
 const RegisterForm = () => {
@@ -90,6 +71,32 @@ const RegisterForm = () => {
     getTecnology();
   }, []);
 
+  const [category, setCategory] = useState([]);
+
+  useEffect(() => {
+    const getCategoria = async () => {
+      const categoriaAPI = await API.get(`/categorias`);
+      console.log(categoriaAPI);
+      setCategory(categoriaAPI.data.Categorias);
+
+    };
+    getCategoria();
+  }, []);
+
+  const [rolUser, setRolUser] = useState();
+
+  const [idRolSelect, setIdRolSelect] = useState();
+
+  const selectorFigure = (idselect) => {
+    const MySwal = withReactContent(Swal)
+    MySwal.fire({
+      icon: 'succes',
+      title: <p>Seleccion {rolUser}</p>,
+      html:<p>Seleccion Realizada</p>,
+      confirmButtonText: "Cerrar",
+    })
+    setIdRolSelect(idselect);
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -148,6 +155,7 @@ const RegisterForm = () => {
                     id="custom-radio"
                     label="Check this Alumno"
                     value="Alumno"
+                    onClick={() => setRolUser("Alumno")}
                     {...register("rol")}
                   />
 
@@ -157,6 +165,7 @@ const RegisterForm = () => {
                     id="custom-switch"
                     label="Check this Maestro"
                     value="Maestro"
+                    onClick={() => setRolUser("Maestro")}
                     {...register("rol")}
                   />
                 </Form.Group>
@@ -187,7 +196,27 @@ const RegisterForm = () => {
             </StepLabel>
             <StepContent>
               <Typography>
+
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                  <Carousel className="caroselProyecto" >
+                    {category.filter(rol => rol.rol === rolUser).map((rol) => (
+                      <Carousel.Item key={rol._id}>
+                        <Figure>
+                          <Figure.Image
+                            width={171}
+                            height={100}
+                            alt={rol.name}
+                            src={rol.imagen}
+                            onClick={() => selectorFigure(rol._id)}
+                          />
+                          <Figure.Caption>
+                            {rol.description}
+                          </Figure.Caption>
+                        </Figure>
+                      </Carousel.Item>
+                    ))}
+                  </Carousel>
+                   <input type="hidden" value={idRolSelect} {...register("id_categoria")}></input>   
                   <Form.Label>Añade una descripcion que te represente:</Form.Label>
                   <Form.Control as="textarea" rows={3} {...register("description")} />
                   {/* <img style="width: 1rem;" ClassName="imgHerramientas" src={tech.ico} alt={tech.name}></img> */}
