@@ -50,6 +50,7 @@ const RegisterForm = () => {
   };
 
   const handleBack = () => {
+    setindexStep(indexStep - 1);
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
     
   };
