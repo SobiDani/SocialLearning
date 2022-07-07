@@ -1,0 +1,20 @@
+.Navbar{
+    display: flex;
+    position: fixed;
+    justify-content: space-around;
+    bottom: 0;
+    border-top: 2px solid #63b5f6;
+    -webkit-box-shadow: 0px 0px 11px 2px #004177; 
+    box-shadow: 0px 0px 11px 2px #004177;
+
+
+
+    li{
+        margin: 0.5em 0;
+    width: 17%;
+        img{
+            width: 100%;
+        }
+    }
+
+}

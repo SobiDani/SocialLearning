@@ -7,6 +7,7 @@ import Home from './pages/Home/Home';
 import Login from './components/Login/Login'
 import Register from './components/Login/Register'
 import { Context } from "./context/LoginStatus"
+import Test from './pages/Test';
 
 function App() {
   const [loginStatus, setLoginStatus] = useState(!localStorage.getItem("token") ? false : true);
@@ -20,6 +21,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path='/test' element={<Test />} />
           </Routes>
         </Router>
       </Context.Provider>
