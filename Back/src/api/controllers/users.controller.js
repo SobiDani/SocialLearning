@@ -25,7 +25,7 @@ const register = async (req, res, next) => {
 
 const login = async (req, res, next) => {
   try {
-    console.log(req.body.username);
+    console.log(req.body);
     const userInfo = await User.findOne({ username: req.body.username });
     
     if (req.body.password === userInfo.password) {
@@ -71,7 +71,7 @@ const logout = (req, res, next) => {
 
 const getAllUsers = async (req, res, next) => {
   try {
-    const allUsers = await User.find();
+    const allUsers = await User.find().populate("id_herramientas");
     return res.json({
       status: 200,
       message: HTTPSTATUSCODE[200],
