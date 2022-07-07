@@ -15,7 +15,7 @@ const register = async (req, res, next) => {
     return res.json({
       status: 201,
       message: HTTPSTATUSCODE[201],
-      user: null,
+      user: createdUser,
     });
   } catch (error) {
     return next(error);
@@ -25,7 +25,7 @@ const register = async (req, res, next) => {
 
 const login = async (req, res, next) => {
   try {
-    
+    console.log(req.body.username);
     const userInfo = await User.findOne({ username: req.body.username });
     
     if (req.body.password === userInfo.password) {

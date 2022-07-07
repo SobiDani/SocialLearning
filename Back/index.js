@@ -4,6 +4,8 @@ const cors = require("cors");
 const cloudinary=require("cloudinary").v2;
 const logger = require("morgan");
 
+//NUEVO
+/* const bodyParser = require('body-parser'); */
 
 
 const HerramientaRouter = require("./src/api/routes/herramientas.routes");
@@ -21,6 +23,11 @@ const PORT = process.env.PORT || 5000;
 const JWT_SECRET = process.env.JWT_SECRET
 
 const server = express();
+
+//NUEVO
+
+/* server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({ extended: true })); */
 
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
