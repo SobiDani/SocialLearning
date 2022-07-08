@@ -7,21 +7,27 @@ import Home from './pages/Home/Home';
 import Login from './components/Login/Login'
 import Register from './components/Login/Register'
 import { Context } from "./context/LoginStatus"
-import Test from './pages/Test';
+
+import Navbar from './components/Navbar/Navbar'
+import Perfil from './components/Perfil/Perfil'
+
 
 function App() {
-  const [loginStatus, setLoginStatus] = useState(!localStorage.getItem("token") ? false : true);
 
+  const [loginStatus, setLoginStatus] = useState();
 
+  /* console.log(loginStatus);
+ */
   return (
     <div >
+      
       <Context.Provider value={{ loginStatus, setLoginStatus }}>
         <Router>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/test' element={<Test />} />
+        {localStorage.getItem("token") && <Navbar></Navbar> } 
+        <Routes>
+            <Route path='/' element={localStorage.getItem("token") ? (<Perfil />) : (<Home />)} />
+            <Route path='/login' setLoginStatus={setLoginStatus} element={<Login />} />
+            <Route path='/register'  element={<Register />} />
           </Routes>
         </Router>
       </Context.Provider>
