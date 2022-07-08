@@ -9,7 +9,7 @@ import "./Login.scss";
 const LoginForm = () => {
   const { register, handleSubmit } = useForm();
   ;
-  const {LoginStatus, setLoginStatus} = React.useContext(Context);
+  const {setLoginStatus} = React.useContext(Context);
   const navigate = useNavigate();
 
   const onSubmit = (formData) => {

@@ -19,7 +19,7 @@ const Chats = () => {
         onChange={handleRoomNameChange}
         className="text-input-field"
       />
-      <Link to={`/${roomName}`} className="enter-room-button">
+      <Link to={`/room/${roomName}`} className="enter-room-button">
         Join room
       </Link>
     </div>
