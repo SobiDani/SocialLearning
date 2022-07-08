@@ -1,14 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { API } from "../../services/api";
-import { Context } from "../../context/LoginStatus";
 import Form from 'react-bootstrap/Form';
+import { Context } from "../../context/LoginStatus"
+
 import "./Login.scss";
 const LoginForm = () => {
   const { register, handleSubmit } = useForm();
-  const { setLoginStatus } = useContext(Context);
-
+  ;
+  const {LoginStatus, setLoginStatus} = React.useContext(Context);
   const navigate = useNavigate();
 
   const onSubmit = (formData) => {
@@ -18,24 +19,11 @@ const LoginForm = () => {
       console.log(res);
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", res.data.user.username);
-
-      setLoginStatus(true);
+      setLoginStatus(res.data.token);
       navigate("/");
     });
 
-    /* fetch('http://localhost:8700/users/login', {
-            method: 'POST',
-            body: formData,
-
-        }).then((response) => {
-          console.log(response);
-          localStorage.setItem("token", response.data.token);
-          localStorage.setItem("user", response.data.user.username);
-    
-          setLoginStatus(true);
-          navigate("/");
-          })
- */
+   
 
     
   };

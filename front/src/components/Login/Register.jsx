@@ -2,7 +2,7 @@ import React from "react";
 import RegisterForm from "./RegisterForm";
 import "./Login.scss";
 
-const Register = () => {
+const Register = (setLoginStatus) => {
   return (
     <div className="divForm">
     <figure>

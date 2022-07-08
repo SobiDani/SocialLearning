@@ -31,7 +31,7 @@ const login = async (req, res, next) => {
   try {
     console.log(req.body);
     const userInfo = await User.findOne({ username: req.body.username });
-    
+    console.log(userInfo.password);
     if (req.body.password === userInfo.password) {
       userInfo.password = null;
       
