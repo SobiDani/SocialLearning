@@ -50,7 +50,11 @@ const RegisterForm = () => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (formData) => {
+
+    
     /* alert("holaaa"); */
+    formData.id_categoria = idRolSelect;
+    
     console.log(formData)
     API.post("users/register", formData).then((res) => {
       console.log(res);
@@ -90,12 +94,13 @@ const RegisterForm = () => {
   const selectorFigure = (idselect) => {
     const MySwal = withReactContent(Swal)
     MySwal.fire({
-      icon: 'succes',
+      icon: 'success',
       title: <p>Seleccion {rolUser}</p>,
       html:<p>Seleccion Realizada</p>,
       confirmButtonText: "Cerrar",
     })
     setIdRolSelect(idselect);
+    
   };
 
   return (
@@ -197,7 +202,7 @@ const RegisterForm = () => {
             <StepContent>
               <Typography>
 
-                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                <Form.Group className="mb-3" >
                   <Carousel className="caroselProyecto" >
                     {category.filter(rol => rol.rol === rolUser).map((rol) => (
                       <Carousel.Item key={rol._id}>
@@ -216,7 +221,7 @@ const RegisterForm = () => {
                       </Carousel.Item>
                     ))}
                   </Carousel>
-                   <input type="hidden" value={idRolSelect} {...register("id_categoria")}></input>   
+                  <Form.Control type="hidden" placeholder="Nombre"  id="id_categoria" value={idRolSelect} {...register("id_categoria", { value: idRolSelect}, { required: true })} />
                   <Form.Label>Añade una descripcion que te represente:</Form.Label>
                   <Form.Control as="textarea" rows={3} {...register("description")} />
                   {/* <img style="width: 1rem;" ClassName="imgHerramientas" src={tech.ico} alt={tech.name}></img> */}
@@ -224,7 +229,13 @@ const RegisterForm = () => {
               </Typography>
               <Box sx={{ mb: 2 }}>
                 <div>
-                  {indexStep === 4 ? (<Button type="submit">Registrar</Button>) : (<Button variant="contained" onClick={handleNext} sx={{ mt: 1, mr: 1 }}> Continue </Button>)}
+                <Button
+                    variant="contained"
+                    onClick={handleNext}
+                    sx={{ mt: 1, mr: 1 }}
+                  >
+                    Continue
+                  </Button>
                   <Button
                     onClick={handleBack}
                     sx={{ mt: 1, mr: 1 }}
@@ -260,7 +271,7 @@ const RegisterForm = () => {
               </Typography>
               <Box sx={{ mb: 2 }}>
                 <div>
-                  {indexStep === 4 ? (<Button type="submit">Registrar</Button>) : (<Button variant="contained" onClick={handleNext} sx={{ mt: 1, mr: 1 }}> Continue </Button>)}
+                  {indexStep === 4 ? (<></>) : (<Button variant="contained" onClick={handleNext} sx={{ mt: 1, mr: 1 }}> Continue </Button>)}
                   <Button
                     onClick={handleBack}
                     sx={{ mt: 1, mr: 1 }}
@@ -273,7 +284,7 @@ const RegisterForm = () => {
           </Step>
         </Stepper>
         <Paper square elevation={0} sx={{ p: 3 }}>
-          {indexStep === 4 ? (<></>) : (<Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>Reset</Button>)}
+          {indexStep === 4 ? (<Button type="submit">Registrar</Button>) : (<Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>Reset</Button>)}
 
 
         </Paper>

@@ -10,6 +10,8 @@ const logger = require("morgan");
 
 const HerramientaRouter = require("./src/api/routes/herramientas.routes");
 
+const CategoriaRouter = require("./src/api/routes/categorias.routes");
+
 const userRouter = require("./src/api/routes/users.routes");
 
 dotenv.config();
@@ -58,7 +60,7 @@ server.set("secretKey", JWT_SECRET)
 
 
 
-
+server.use("/categorias", CategoriaRouter)
 
 server.use("/herramientas", HerramientaRouter)
 

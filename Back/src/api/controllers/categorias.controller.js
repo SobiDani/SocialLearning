@@ -35,6 +35,7 @@ const getCategoriaByID = async (req, res, next) => {
 
 const createCategorias = async (req, res, next) => {
   try {
+    console.log(req.body);
     const newCategorias = new Categoria(req.body);
     if (req.file) {
       newCategorias.ico = req.file.path;
@@ -43,11 +44,12 @@ const createCategorias = async (req, res, next) => {
     return res.json({
       status: 201,
       message: HTTPSTATUSCODE[201],
-      herramienta: createdCategorias,
+      categorias: createdCategorias,
     });
   } catch (error) {
     return next(error);
   }
+  
 };
 
 const deleteCategorias = async (req, res, next) => {
@@ -70,14 +72,14 @@ const deleteCategorias = async (req, res, next) => {
   
       patchCategoria._id = id;
 
-      const herramientaData= await Categoria.findById(id)
+      /* const CategoriaData= await Categoria.findById(id) */
+/* 
+      patchCategoria.autor =[...herramientaData.autor, ...patchCategoria.autor] */
 
-      patchCategoria.autor =[...herramientaData.autor, ...patchCategoria.autor]
-
-      if (herramientaData.ico) {
+      /* if (herramientaData.ico) {
         deleteFile(herramientaData.ico);
         }
-
+ */
       if (req.file) {
         patchCategoria.ico = req.file.path;
       }

@@ -5,13 +5,13 @@ const upload = require("../../middlewares/file")
 const {isAuth} = require("../../middlewares/auth.middleware");
 
 const {
-  getAllHerramientas, getHerramientaByID, createHerramientas,patchHerramienta,deleteHerramientas
-} = require("../controllers/herramientas.controller");
+  getAllCategorias, getCategoriaByID, createCategorias,patchCategoria,deleteCategorias
+} = require("../controllers/categorias.controller");
 
-router.get("/", getAllHerramientas);
-router.get("/id/:id", getHerramientaByID);
-router.post("/"/* ,[isAuth] */, upload.single("ico"), createHerramientas);
-router.delete('/:id',[isAuth], upload.single("ico"), deleteHerramientas);
-router.patch('/:id',[isAuth], upload.single("ico"), patchHerramienta)
+router.get("/", getAllCategorias);
+router.get("/id/:id", getCategoriaByID);
+router.post("/"/* ,[isAuth] */, upload.single("imagen"), createCategorias);
+router.delete('/:id',[isAuth], upload.single("imagen"), deleteCategorias);
+router.patch('/:id'/* ,[isAuth] */, upload.single("imagen"), patchCategoria)
 
 module.exports = router;
