@@ -13,16 +13,18 @@ import Navbar from './components/Navbar/Navbar'
 
 
 function App() {
+
   const [loginStatus, setLoginStatus] = useState();
 
   return (
     <div >
+      
       <Context.Provider value={{ loginStatus, setLoginStatus }}>
         <Router>
         {localStorage.getItem("token") && <Navbar></Navbar> } 
         <Routes>
             <Route path='/' element={localStorage.getItem("token") ? (<Perfil />) : (<Home />)} />
-            <Route path='/login' {localStorage.getItem("token") ? (<Perfil />) : (<Home />)} />
+            <Route path='/login' setLoginStatus={setLoginStatus} element={<Login />} />
             <Route path='/register' element={<Register />} />
             <Route exact path='/room/:roomId' element={<ChatRoom/>}/>
             <Route exact path='/room' element={<Chats />} />

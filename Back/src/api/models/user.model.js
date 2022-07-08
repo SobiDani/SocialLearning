@@ -7,7 +7,7 @@ const saltRounds = 10;
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  username: { type: String, trim: true, required: true },
+  username: { type: String, trim: true, required: true, unique: true },
   password: { type: String, trim: true, required: true },
   name: { type: String, trim: true, required: false },
   rol: { type: String, enum : ['Alumno','Maestro'], trim: true, required: false },
