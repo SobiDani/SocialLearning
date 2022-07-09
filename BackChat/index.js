@@ -9,7 +9,8 @@ const PORT = 8008;
 const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
 
 io.on("connection", (socket) => {
-  
+  console.log(socket);
+
   console.log(`Client ${socket.id} connected`);
 
   // Join a conversation
@@ -22,7 +23,6 @@ io.on("connection", (socket) => {
     io.in(roomId).emit(NEW_CHAT_MESSAGE_EVENT, data);
     //AQUI PODEMOS HACER FETCH AL NODE PRINCIPAL PARA IR GUARDANDO LOS CHATS
     console.log(data);
-
 
   });
 
