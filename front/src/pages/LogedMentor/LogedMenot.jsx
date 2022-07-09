@@ -5,8 +5,13 @@ import Container from 'react-bootstrap/Container'
 
 import Form from 'react-bootstrap/Form'
 
+import Button from '@mui/material/Button';
+
 import { useForm } from "react-hook-form";
 import { API } from "../../services/api";
+
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 import './LogedMenot.scss';
 
@@ -15,11 +20,18 @@ const LogedMenot = () => {
 
   const onSubmit = (formData) => {
 
-    
-    
+
+
     console.log(formData)
-    API.post("users/register", formData).then((res) => {
+    API.patch("users/" + localStorage.getItem("idUser"), formData).then((res) => {
       console.log(res);
+      const MySwal = withReactContent(Swal)
+      MySwal.fire({
+        icon: 'success',
+        title: <p>Cambios Realizados</p>,
+        html: <p>Los cambios se realizaron correctamente sobre tu cuenta</p>,
+        confirmButtonText: "Cerrar",
+      })
     });
   };
 
@@ -30,18 +42,19 @@ const LogedMenot = () => {
   useEffect(() => {
     const getTecnology = async () => {
       const usersAPI = await API.get(`/herramientas`);
-      const HerramientasLoginValues = [];
-      for (const herramienta of usersAPI.data.Herramientas) {
-        for (const herraientaLogin of herraientasLogin) {
-          console.log(herramienta._id, herraientaLogin._id);
-          if(herramienta._id === herraientaLogin._id){
-            console.log(true);
-            herramienta.hability = "1"
-          }else{
-            herramienta.hability = "0"
+
+      for (const herraientaLogin of herraientasLogin) {
+        for (const herramienta of usersAPI.data.Herramientas) {
+          if (herramienta._id === herraientaLogin._id) {
+            /* console.log(herramienta._id + "---" + herraientaLogin._id);
+            console.log(true); */
+            herramienta.hability = true
+          } else {
+            /* console.log(false); */
           }
-        } 
+        }
       }
+
       console.log(usersAPI.data.Herramientas);
       setTecnology(usersAPI.data.Herramientas);
 
@@ -61,9 +74,8 @@ const LogedMenot = () => {
     getCategoria();
   }, []);
 
-  
-  
-  
+
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Container fluid="md" className="container">
@@ -76,7 +88,7 @@ const LogedMenot = () => {
           <Col className="container_Row_Col">
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email:</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" {...register("username", { required: true })} />
+              <Form.Control type="email" placeholder="Enter email" {...register("username", { value: localStorage.getItem("username") }, { required: true })} />
             </Form.Group>
           </Col>
         </Row>
@@ -88,31 +100,38 @@ const LogedMenot = () => {
             </Form.Group>
           </Col>
         </Row>
-        <Row className="container_Row">    
+        <Row className="container_Row">
           <Col className="container_Row_Col">
             <Form.Group className="mb-3" controlId="formBasicText">
               <Form.Label>Nombre:</Form.Label>
-              <Form.Control type="text" placeholder="Nombre" {...register("name", { required: true })} />
+              <Form.Control type="text" placeholder="Nombre"  {...register("name", { value: localStorage.getItem("name") }, { required: true })} />
             </Form.Group>
           </Col>
         </Row>
         <Row className="container_Row">
           {tecnology.map((tech) => (
-                  <Form.Group className="mb-3" key={tech._id} controlId="formBasicswitch">
-                    <Form.Check
-                      type="switch"
-                      id="HerramientaSwitch"
-                      label={tech.name + " " + tech.description}
-                      value={tech._id}
-                      {...register("id_herramientas")}
-                    />
-                    {/* <img style="width: 1rem;" ClassName="imgHerramientas" src={tech.ico} alt={tech.name}></img> */}
-                  </Form.Group>
-                ))}
+            <Form.Group className="mb-3" key={tech._id} controlId="formBasicswitch">
+              <Form.Check
+                isValid={tech.hability}
+                type="switch"
+                label={tech.name + " " + tech.description}
+                value={tech._id}
+                {...register("id_herramientas")}
+              />
+              {/* <img style="width: 1rem;" ClassName="imgHerramientas" src={tech.ico} alt={tech.name}></img> */}
+            </Form.Group>
+          ))}
+        </Row>
+        <Row className="container_Row">
+          <Col lassName="container_Row_Col">
+            <Button size="large" color="success" type="submit">Guardar</Button>
+          </Col>
         </Row>
       </Container>
     </form>
   )
+
+
 }
 
 export default LogedMenot
