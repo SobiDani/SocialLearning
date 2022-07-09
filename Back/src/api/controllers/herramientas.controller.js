@@ -72,7 +72,7 @@ const deleteHerramientas = async (req, res, next) => {
 
       const herramientaData= await Herramienta.findById(id)
 
-      patchHerramienta.autor =[...herramientaData.autor, ...patchHerramienta.autor]
+      /* patchHerramienta.autor =[...herramientaData.autor, ...patchHerramienta.autor] */
 
       if (herramientaData.ico) {
         deleteFile(herramientaData.ico);
