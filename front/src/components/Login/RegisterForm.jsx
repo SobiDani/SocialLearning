@@ -4,8 +4,6 @@ import { API } from "../../services/api";
 import "./Login.scss";
 import Form from 'react-bootstrap/Form'
 import { useNavigate } from "react-router-dom";
-
-
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -14,10 +12,8 @@ import StepContent from '@mui/material/StepContent';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-
 import Figure from 'react-bootstrap/Figure'
 import { Carousel } from 'react-bootstrap';
-
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 

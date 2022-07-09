@@ -9,6 +9,8 @@ const PORT = 8008;
 const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
 
 io.on("connection", (socket) => {
+  console.log(socket);
+  socket.id = "31";
   console.log(`Client ${socket.id} connected`);
 
   // Join a conversation
@@ -18,6 +20,7 @@ io.on("connection", (socket) => {
   // Listen for new messages
   socket.on(NEW_CHAT_MESSAGE_EVENT, (data) => {
     io.in(roomId).emit(NEW_CHAT_MESSAGE_EVENT, data);
+    console.log(data);
   });
 
   // Leave the room if the user closes the socket
