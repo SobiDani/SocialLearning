@@ -19,6 +19,13 @@ const LoginForm = () => {
       console.log(res);
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", res.data.user.username);
+      localStorage.setItem("name", res.data.user.name);
+      localStorage.setItem("rol", res.data.user.rol);
+      localStorage.setItem("idUser", res.data.user._id);
+      localStorage.setItem("imagen", res.data.user.id_categoria.imagen);
+      localStorage.setItem("herramientas", JSON.stringify(res.data.user.id_herramientas));
+
+      console.log(JSON.parse(localStorage.herramientas))
       setLoginStatus(res.data.token);
       navigate("/");
     });

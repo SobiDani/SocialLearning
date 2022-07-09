@@ -10,17 +10,20 @@ const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
 
 io.on("connection", (socket) => {
   console.log(socket);
-  socket.id = "31";
+
   console.log(`Client ${socket.id} connected`);
 
   // Join a conversation
   const { roomId } = socket.handshake.query;
   socket.join(roomId);
+  console.log(socket.handshake.query);
 
   // Listen for new messages
   socket.on(NEW_CHAT_MESSAGE_EVENT, (data) => {
     io.in(roomId).emit(NEW_CHAT_MESSAGE_EVENT, data);
+    //AQUI PODEMOS HACER FETCH AL NODE PRINCIPAL PARA IR GUARDANDO LOS CHATS
     console.log(data);
+
   });
 
   // Leave the room if the user closes the socket
