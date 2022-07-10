@@ -31,7 +31,6 @@ function App() {
             <Route path='/dashboard' element={<Dashboard />} />
             <Route exact path='/chats/:roomId' element={<ChatRoom/>}/>
             <Route exact path='/chats' element={<Chats />} />
-
           </Routes>
         </Router>
       </Context.Provider>
