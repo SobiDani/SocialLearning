@@ -38,7 +38,12 @@ const Chats = () => {
     image: "https://cdn-icons-png.flaticon.com/512/4645/4645949.png",
     nombre:"Roberto",
     id_:6
-  }, ]
+  },
+  {
+    image: "https://cdn-icons-png.flaticon.com/512/4645/4645949.png",
+    nombre:"Rocio",
+    id_:6
+  } ]
 
   return (
     <div className="chat-container">

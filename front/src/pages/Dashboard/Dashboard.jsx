@@ -55,9 +55,6 @@ const putMatches = async (matchedUserId) => {
 }
 
 
-
- 
-
     const [lastDirection, setLastDirection] = useState()
   
     const swiped = (direction, nameToDelete) => {

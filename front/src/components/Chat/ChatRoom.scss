@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: column;
     margin: 16px;
+    margin-bottom: 6em;
 }
 
 .room-name {
@@ -60,7 +61,6 @@
     background: #31a24c;
     padding: 24px 12px;
     border: none;
-    margin-bottom: 3em;
 }
 
 .messages-container, .new-message-input-field, .send-message-button {
