@@ -29,8 +29,9 @@ function App() {
             <Route path='/login' setLoginStatus={setLoginStatus} element={<Login />} />
             <Route path='/register' element={<Register />} />
             <Route path='/dashboard' element={<Dashboard />} />
-            <Route exact path='/ /:roomId' element={<ChatRoom/>}/>
-            <Route exact path='/room' element={<Chats />} />
+            <Route exact path='/chats/:roomId' element={<ChatRoom/>}/>
+            <Route exact path='/chats' element={<Chats />} />
+
           </Routes>
         </Router>
       </Context.Provider>
