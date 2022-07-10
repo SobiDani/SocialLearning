@@ -26,7 +26,7 @@ function App() {
             <Route path='/' element={localStorage.getItem("token") ? (<Perfil />) : (<Home />)} />
             <Route path='/login' setLoginStatus={setLoginStatus} element={<Login />} />
             <Route path='/register' element={<Register />} />
-            <Route exact path='/ /:roomId' element={<ChatRoom/>}/>
+            <Route exact path='/room/:roomId' element={<ChatRoom/>}/>
             <Route exact path='/room' element={<Chats />} />
           </Routes>
         </Router>

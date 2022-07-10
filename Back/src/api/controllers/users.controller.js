@@ -101,6 +101,60 @@ const getUsersByID = async (req, res, next) => {
   }
 };
 
+const getUsersAlumnoByID = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const UsersByID = await User.findById(id);
+    const userFind = await User.find(id_herramientas=UsersByID.id_herramientas);
+    /* const user = [];
+    for (const idHerramientas of UsersByID.id_herramientas) {
+      const userFind = await User.find(id_herramientas=idHerramientas);
+      
+      for (const usuario of userFind) {
+        
+        if(usuario.rol === "Maestro"){
+          
+          if(user.length != 0){
+            username = [];
+            for (const userArray of user) {
+              username.push(userArray.name);
+            }
+            console.log(username);
+            user.push(usuario);  
+          }else{
+            user.push(usuario);  
+          }
+          
+          
+         
+        } 
+      }
+      
+
+    } */
+    return res.json({
+      status: 200,
+      message: HTTPSTATUSCODE[200],
+      Users: userFind,
+    });
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const getUserMaestrosByID = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const UsersByID = await User.findById(id);
+    return res.json({
+      status: 200,
+      message: HTTPSTATUSCODE[200],
+      Users: UsersByID,
+    });
+  } catch (error) {
+    return next(error);
+  }
+};
 
 const deleteUsers = async (req, res, next) => {
     try {
@@ -142,4 +196,4 @@ const deleteUsers = async (req, res, next) => {
     }
   };
 
-module.exports = { login, register, logout, getAllUsers, getUsersByID, deleteUsers, patchUser };
+module.exports = { login, register, logout, getAllUsers, getUsersByID, deleteUsers, patchUser, getUsersAlumnoByID, getUserMaestrosByID };
