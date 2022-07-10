@@ -4,13 +4,13 @@ const router = express.Router();
 const {isAuth} = require("../../middlewares/auth.middleware");
 
 const {
-  getAllMatchCards, getMatchCardByID, createMatchCards,patchMatchCard,deleteMatchCards
-} = require("../controllers/categorias.controller");
+  getAllMatchCard, getMatchCardByID, createMatchCard,patchMatchCard,deleteMatchCard
+} = require("../controllers/matchCard.controller");
 
-router.get("/", getAllMatchCards);
+router.get("/", getAllMatchCard);
 router.get("/id/:id", getMatchCardByID);
-router.post("/"/* ,[isAuth] */,  createMatchCards);
-router.delete('/:id',[isAuth], deleteMatchCards);
+router.post("/"/* ,[isAuth] */,  createMatchCard);
+router.delete('/:id',[isAuth], deleteMatchCard);
 router.patch('/:id'/* ,[isAuth] */, patchMatchCard)
 
 module.exports = router;
