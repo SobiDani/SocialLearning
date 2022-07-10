@@ -7,7 +7,7 @@ const HerramientaSchema = new Schema(
     name: { type: String, required: true },
     type: { type: String, required: true },
     description: { type: String, required: false },
-    hability: { type: String, required: false },
+    hability: { type: Boolean, required: false },
     ico: { type: String, required: true}
   },
   { timestamps: true }

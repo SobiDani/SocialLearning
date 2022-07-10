@@ -30,7 +30,7 @@ const register = async (req, res, next) => {
 const login = async (req, res, next) => {
   try {
     console.log(req.body);
-    const userInfo = await User.findOne({ username: req.body.username });
+    const userInfo = await User.findOne({ username: req.body.username }).populate("id_herramientas").populate("id_categoria");
     console.log(userInfo.password);
     if (req.body.password === userInfo.password) {
       userInfo.password = null;

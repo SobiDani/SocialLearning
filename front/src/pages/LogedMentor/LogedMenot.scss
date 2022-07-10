@@ -1,0 +1,11 @@
+.container{
+    &_Row{
+        &_Col{
+            &_imgPerfil{
+                width: 100%;
+                border-radius: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
