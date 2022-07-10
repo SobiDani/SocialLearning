@@ -12,6 +12,8 @@ const HerramientaRouter = require("./src/api/routes/herramientas.routes");
 
 const CategoriaRouter = require("./src/api/routes/categorias.routes");
 
+const MatchCardRouter = require("./src/api/routes/matchCard.routes");
+
 const userRouter = require("./src/api/routes/users.routes");
 
 dotenv.config();
@@ -59,6 +61,10 @@ server.use(cors({
 server.set("secretKey", JWT_SECRET)
 
 server.use("/categorias", CategoriaRouter)
+
+
+server.use("/matchCard", MatchCardRouter)
+
 server.use("/herramientas", HerramientaRouter)
 server.use("/users", userRouter);
 
