@@ -23,7 +23,6 @@ io.on("connection", (socket) => {
     io.in(roomId).emit(NEW_CHAT_MESSAGE_EVENT, data);
     //AQUI PODEMOS HACER FETCH AL NODE PRINCIPAL PARA IR GUARDANDO LOS CHATS
     console.log(data);
-
   });
 
   // Leave the room if the user closes the socket
