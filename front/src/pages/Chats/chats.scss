@@ -1,14 +1,36 @@
-.home-container {
-    position: fixed;
-    left: 10%;
-    right: 10%;
-    top: 50%;
-    transform: translate(0, -50%);
-    display: flex;
-    flex-direction: column;
+.chat-container {
+  h2 {
+    text-align: center;
+    margin-top: 1em;
+    font-weight: bold;
+    text-shadow: 2px 0 rgb(14, 98, 233), -2px 0 rgb(14, 98, 233),
+      0 2px rgb(14, 98, 233), 0 -2px rgb(14, 98, 233), 1px 1px rgb(14, 98, 233),
+      -1px -1px rgb(14, 98, 233), 1px -1px rgb(14, 98, 233),
+      -1px 1px rgb(14, 98, 233);
+    color: white;
+  }
+
+  .usuariosChat {
+    margin-bottom: 6em;
+    .usuariosChatimagen {
+      display: flex;
+      align-items: center;
+      border: 5px rgba(113, 177, 255, 0.718) double;
+      padding: 1em;
+      p{
+        text-align: center;
+        
+      }
+    }
+    img {
+      width: 17%;
+      margin-right:2em ;
+    }
+    
+  }
 }
 
-.text-input-field {
+/* .text-input-field {
     padding: 24px 12px;
     border-radius: 7px;
     font-size: 24px;
@@ -28,4 +50,4 @@
     text-align: center;
     text-decoration: none;
     border-radius: 7px;
-}
+} */
