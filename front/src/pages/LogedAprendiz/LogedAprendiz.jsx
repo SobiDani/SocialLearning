@@ -2,11 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Container from 'react-bootstrap/Container'
-
 import Form from 'react-bootstrap/Form'
-
 import Button from '@mui/material/Button';
-
 import { useForm } from "react-hook-form";
 import { API } from "../../services/api";
 
@@ -38,7 +35,7 @@ const LogedAprendiz = () => {
 
   const [tecnology, setTecnology] = useState([]);
 
-  const [herraientasLogin, setHerraientasLogin] = useState(JSON.parse(localStorage.getItem("herramientas")));
+  const [herraientasLogin/* , setHerraientasLogin */] = useState(JSON.parse(localStorage.getItem("herramientas")));
 
   useEffect(() => {
     const getTecnology = async () => {
@@ -63,7 +60,7 @@ const LogedAprendiz = () => {
     getTecnology();
   }, []);
 
-  const [category, setCategory] = useState([]);
+  const [/* category */, setCategory] = useState([]);
 
   useEffect(() => {
     const getCategoria = async () => {

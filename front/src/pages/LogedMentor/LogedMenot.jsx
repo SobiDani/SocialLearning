@@ -2,26 +2,18 @@ import React, { useState, useEffect } from 'react'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Container from 'react-bootstrap/Container'
-
 import Form from 'react-bootstrap/Form'
-
 import Button from '@mui/material/Button';
-
 import { useForm } from "react-hook-form";
 import { API } from "../../services/api";
-
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-
 import './LogedMenot.scss';
 
 const LogedMenot = () => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (formData) => {
-
-
-
     console.log(formData)
     API.patch("users/" + localStorage.getItem("idUser"), formData).then((res) => {
       console.log(res);
@@ -37,7 +29,7 @@ const LogedMenot = () => {
 
   const [tecnology, setTecnology] = useState([]);
 
-  const [herraientasLogin, setHerraientasLogin] = useState(JSON.parse(localStorage.getItem("herramientas")));
+  const [herraientasLogin/* , setHerraientasLogin */] = useState(JSON.parse(localStorage.getItem("herramientas")));
 
   useEffect(() => {
     const getTecnology = async () => {
@@ -62,7 +54,7 @@ const LogedMenot = () => {
     getTecnology();
   }, []);
 
-  const [category, setCategory] = useState([]);
+  const [/* category, */ setCategory] = useState([]);
 
   useEffect(() => {
     const getCategoria = async () => {
