@@ -10,6 +10,10 @@ const HTTPSTATUSCODE = require("../../utils/httpStatusCode");
 const register = async (req, res, next) => {
   try {
     console.log(req.body);
+
+    if(req.body.id_herramientas === false){req.body.id_herramientas = ["62c6bb4f094d1cab92b166d0"]}
+    if(req.body.id_categoria === ''){req.body.id_categoria = "62c75621dfa25d37cf627fad"}
+    console.log(req.body);
     const newUser = new User(req.body);
     const createdUser = newUser.save();
     return res.json({
@@ -25,9 +29,9 @@ const register = async (req, res, next) => {
 
 const login = async (req, res, next) => {
   try {
-    console.log(req.body.username);
-    const userInfo = await User.findOne({ username: req.body.username });
-    
+    console.log(req.body);
+    const userInfo = await User.findOne({ username: req.body.username }).populate("id_herramientas").populate("id_categoria");
+    console.log(userInfo.password);
     if (req.body.password === userInfo.password) {
       userInfo.password = null;
       
@@ -71,7 +75,7 @@ const logout = (req, res, next) => {
 
 const getAllUsers = async (req, res, next) => {
   try {
-    const allUsers = await User.find();
+    const allUsers = await User.find().populate("id_herramientas").populate("id_categoria");
     return res.json({
       status: 200,
       message: HTTPSTATUSCODE[200],

@@ -10,6 +10,8 @@ const logger = require("morgan");
 
 const HerramientaRouter = require("./src/api/routes/herramientas.routes");
 
+const CategoriaRouter = require("./src/api/routes/categorias.routes");
+
 const userRouter = require("./src/api/routes/users.routes");
 
 dotenv.config();
@@ -18,7 +20,7 @@ const {connect}= require("./src/utils/database")
 
 connect();
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8700;
 
 const JWT_SECRET = process.env.JWT_SECRET
 
@@ -56,18 +58,9 @@ server.use(cors({
 
 server.set("secretKey", JWT_SECRET)
 
-
-
-
-
+server.use("/categorias", CategoriaRouter)
 server.use("/herramientas", HerramientaRouter)
-
-
-
-
 server.use("/users", userRouter);
-
-
 
 server.listen(PORT, () => {
     console.log(`Server listening on http://localhost:${PORT}`)

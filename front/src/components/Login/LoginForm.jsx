@@ -1,41 +1,36 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { API } from "../../services/api";
-import { Context } from "../../context/LoginStatus";
 import Form from 'react-bootstrap/Form';
+import { Context } from "../../context/LoginStatus"
+
 import "./Login.scss";
 const LoginForm = () => {
   const { register, handleSubmit } = useForm();
-  const { setLoginStatus } = useContext(Context);
-
+  ;
+  const {setLoginStatus} = React.useContext(Context);
   const navigate = useNavigate();
 
   const onSubmit = (formData) => {
     
-
+    console.log(formData);
     API.post("users/login", formData).then((res) => {
       console.log(res);
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", res.data.user.username);
+      localStorage.setItem("name", res.data.user.name);
+      localStorage.setItem("rol", res.data.user.rol);
+      localStorage.setItem("idUser", res.data.user._id);
+      localStorage.setItem("imagen", res.data.user.id_categoria.imagen);
+      localStorage.setItem("herramientas", JSON.stringify(res.data.user.id_herramientas));
 
-      setLoginStatus(true);
+      console.log(JSON.parse(localStorage.herramientas))
+      setLoginStatus(res.data.token);
       navigate("/");
     });
 
-    /* fetch('http://localhost:8700/users/login', {
-            method: 'POST',
-            body: formData,
-
-        }).then((response) => {
-          console.log(response);
-          localStorage.setItem("token", response.data.token);
-          localStorage.setItem("user", response.data.user.username);
-    
-          setLoginStatus(true);
-          navigate("/");
-          })
- */
+   
 
     
   };
