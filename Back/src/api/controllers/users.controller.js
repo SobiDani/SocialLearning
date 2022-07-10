@@ -105,23 +105,35 @@ const getUsersAlumnoByID = async (req, res, next) => {
   try {
     const id = req.params.id;
     const UsersByID = await User.findById(id);
-    const userFind = await User.find(id_herramientas=UsersByID.id_herramientas);
-    /* const user = [];
+    /* const userFind = await User.find(id_herramientas=UsersByID.id_herramientas); */
+    
+    const userName = [];
+    const user = [];
+
+
     for (const idHerramientas of UsersByID.id_herramientas) {
-      const userFind = await User.find(id_herramientas=idHerramientas);
+
+
+      const userFind = await User.find({id_herramientas: idHerramientas});
+      console.log(userFind);
       
       for (const usuario of userFind) {
         
         if(usuario.rol === "Maestro"){
           
           if(user.length != 0){
-            username = [];
-            for (const userArray of user) {
-              username.push(userArray.name);
+
+            if(userName.includes(usuario.username)){
+              /* console.log(userName.includes(usuario.username)); */
+
+            }else{
+              /* console.log(userName.includes(usuario.username), userName, usuario.username); */
+              user.push(usuario);
             }
-            console.log(username);
-            user.push(usuario);  
+            userName.push(usuario.username)
+              
           }else{
+            userName.push(usuario.username)
             user.push(usuario);  
           }
           
@@ -131,11 +143,11 @@ const getUsersAlumnoByID = async (req, res, next) => {
       }
       
 
-    } */
+    }
     return res.json({
       status: 200,
       message: HTTPSTATUSCODE[200],
-      Users: userFind,
+      Users: user,
     });
   } catch (error) {
     return next(error);
@@ -146,10 +158,49 @@ const getUserMaestrosByID = async (req, res, next) => {
   try {
     const id = req.params.id;
     const UsersByID = await User.findById(id);
+    /* const userFind = await User.find(id_herramientas=UsersByID.id_herramientas); */
+    
+    const userName = [];
+    const user = [];
+
+
+    for (const idHerramientas of UsersByID.id_herramientas) {
+
+
+      const userFind = await User.find({id_herramientas: idHerramientas});
+      console.log(userFind);
+      
+      for (const usuario of userFind) {
+        
+        if(usuario.rol === "Alumno"){
+          
+          if(user.length != 0){
+
+            if(userName.includes(usuario.username)){
+              /* console.log(userName.includes(usuario.username)); */
+
+            }else{
+              /* console.log(userName.includes(usuario.username), userName, usuario.username); */
+              user.push(usuario);
+            }
+            userName.push(usuario.username)
+              
+          }else{
+            userName.push(usuario.username)
+            user.push(usuario);  
+          }
+          
+          
+         
+        } 
+      }
+      
+
+    }
     return res.json({
       status: 200,
       message: HTTPSTATUSCODE[200],
-      Users: UsersByID,
+      Users: user,
     });
   } catch (error) {
     return next(error);
