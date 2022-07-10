@@ -1,32 +1,46 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import TinderCard from 'react-tinder-card';
 import { useState } from 'react';
 import './Dashboard.scss';
+import { API } from '../../services/api';
+
+
 
 const Dashboard = () => {
 
-    const characters = [
-        {
-          name: 'Richard Hendricks',
-          url: 'https://i.imgur.com/yQLDyiR.jpg'
-        },
-        {
-          name: 'Erlich Bachman',
-          url: 'https://i.pinimg.com/736x/7a/9e/39/7a9e391d873b77659d7fc730f9745669--animals-dog-funny-animals.jpg'
-        },
-        {
-          name: 'Monica Hall',
-          url: 'https://www.dogandpuptown.com/wp-content/uploads/2017/05/Random-funny-dogs-may1907-450x448.jpg'
-        },
-        {
-          name: 'Jared Dunn',
-          url: 'https://i.redd.it/bbtgfcqauiv61.jpg'
-        },
-        {
-          name: 'Dinesh Chugtai',
-          url: 'https://static.boredpanda.com/blog/wp-content/uploads/2021/03/url-1.jpg'
-        }
-      ]
+  const [User, setUser] = useState([]);
+
+  useEffect(() => {
+
+   const getUsers = async () => {
+     const usersAPI = await API.get(`users`);
+     console.log(usersAPI);
+     setUser(usersAPI.data.Users);
+     
+   };
+   getUsers();
+ }, []);
+ 
+
+//   const getUser = async () => {
+//     try {
+//         const response = await API.get('users', {
+           
+//         })
+//         setUser(response.data)
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
+
+
+
+// useEffect(() => {
+//   getUser()
+
+// }, [User._id]);
+
+
     const [lastDirection, setLastDirection] = useState()
   
     const swiped = (direction, nameToDelete) => {
@@ -46,11 +60,11 @@ const Dashboard = () => {
         <div className='swipe-container'>
             <div className='card-container'>
 
-            {characters.map((character) =>
-                <TinderCard className='swipe' key={character.name} onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
-            <div style={{ backgroundImage: 'url(' + character.url + ')' }} className='card'>
+            {User.map((character) =>
+                <TinderCard className='swipe' key={character._id} onSwipe={(dir) => swiped(dir, character.username)} onCardLeftScreen={() => outOfFrame(character.username)}>
+            <div style={{ backgroundImage: 'url(' + character.id_categoria.imagen + ')' }} className='card'>
 
-              <h3>{character.name}</h3>
+              <h3>{User.name}</h3>
             </div>
           </TinderCard>
         )}
