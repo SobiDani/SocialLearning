@@ -24,8 +24,9 @@ const LoginForm = () => {
       localStorage.setItem("idUser", res.data.user._id);
       localStorage.setItem("imagen", res.data.user.id_categoria.imagen);
       localStorage.setItem("herramientas", JSON.stringify(res.data.user.id_herramientas));
+      localStorage.setItem("description", res.data.user.description);
 
-      console.log(JSON.parse(localStorage.herramientas))
+      /* console.log(JSON.parse(localStorage.herramientas)) */
       setLoginStatus(res.data.token);
       navigate("/");
     });
