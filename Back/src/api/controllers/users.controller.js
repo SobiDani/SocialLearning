@@ -167,7 +167,7 @@ const getUserMaestrosByID = async (req, res, next) => {
     for (const idHerramientas of UsersByID.id_herramientas) {
 
 
-      const userFind = await User.find({id_herramientas: idHerramientas});
+      const userFind = await User.find({id_herramientas: idHerramientas}).populate("id_categoria");
       console.log(userFind);
       
       for (const usuario of userFind) {

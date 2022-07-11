@@ -17,6 +17,10 @@ const LogedMenot = () => {
     console.log(formData)
     API.patch("users/" + localStorage.getItem("idUser"), formData).then((res) => {
       console.log(res);
+      /* localStorage.setItem("user", formData.username);
+      localStorage.setItem("name", formData.name);
+      localStorage.setItem("herramientas", JSON.stringify(formData.id_herramientas));
+      localStorage.setItem("description", formData.description); */
       const MySwal = withReactContent(Swal)
       MySwal.fire({
         icon: 'success',
