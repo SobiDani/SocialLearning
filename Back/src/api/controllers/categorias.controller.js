@@ -21,11 +21,11 @@ const getAllCategorias = async (req, res, next) => {
 const getCategoriaByID = async (req, res, next) => {
   try {
     const id = req.params.id;
-    const herramientaByID = await Categoria.findById(id);
+    const categoriaByID = await Categoria.findById(id);
     return res.json({
       status: 200,
       message: HTTPSTATUSCODE[200],
-      Categoria: herramientaByID,
+      Categoria: categoriaByID,
     });
   } catch (error) {
     return next(error);
@@ -56,9 +56,9 @@ const deleteCategorias = async (req, res, next) => {
     try {
       const { id } = req.params;
   
-      const herramientaBorrado = await Categoria.findByIdAndDelete(id);
+      const categoriaBorrado = await Categoria.findByIdAndDelete(id);
   
-      return res.status(200).json(herramientaBorrado);
+      return res.status(200).json(categoriaBorrado);
     } catch (error) {
       return next(error);
     }
@@ -74,10 +74,10 @@ const deleteCategorias = async (req, res, next) => {
 
       /* const CategoriaData= await Categoria.findById(id) */
 /* 
-      patchCategoria.autor =[...herramientaData.autor, ...patchCategoria.autor] */
+      patchCategoria.autor =[...categoriaData.autor, ...patchCategoria.autor] */
 
-      /* if (herramientaData.ico) {
-        deleteFile(herramientaData.ico);
+      /* if (categoriaData.ico) {
+        deleteFile(categoriaData.ico);
         }
  */
       if (req.file) {

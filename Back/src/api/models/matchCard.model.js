@@ -4,12 +4,10 @@ const Schema = mongoose.Schema;
 
 const matchcardchema = new Schema(
   {
-    id_users: [
-      { type: Schema.Types.ObjectId, ref: "users", required: true },
-    ],
-    id_users_match: [
-      { type: Schema.Types.ObjectId, ref: "users", required: true },
-    ],
+    id_users: 
+      { type: Schema.Types.ObjectId, ref: "users" },
+    id_users_match: 
+      { type: Schema.Types.ObjectId, ref: "users" },
     roomid: { type: String, required: false },
     matchConfirm: { type: Boolean, required: false },
   },

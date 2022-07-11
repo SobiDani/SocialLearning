@@ -115,7 +115,7 @@ const getUsersAlumnoByID = async (req, res, next) => {
 
 
       const userFind = await User.find({id_herramientas: idHerramientas}).populate("id_categoria");
-      console.log(userFind);
+      /* console.log(userFind); */
       
       for (const usuario of userFind) {
         
@@ -168,7 +168,7 @@ const getUserMaestrosByID = async (req, res, next) => {
 
 
       const userFind = await User.find({id_herramientas: idHerramientas}).populate("id_categoria");
-      console.log(userFind);
+      /* console.log(userFind); */
       
       for (const usuario of userFind) {
         

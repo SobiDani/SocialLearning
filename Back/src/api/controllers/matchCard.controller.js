@@ -2,7 +2,15 @@
 const MatchCard = require("../models/matchcard.model");
 const HTTPSTATUSCODE = require("../../utils/httpStatusCode")
 
+function isEmptyObject(obj) {
+  for (var property in obj) {
+      if (obj.hasOwnProperty(property)) {
+          return false;
+      }
+  }
 
+  return true;
+}
 
 const getAllMatchCard = async (req, res, next) => {
   try {
@@ -21,11 +29,12 @@ const getAllMatchCard = async (req, res, next) => {
 const getMatchCardByID = async (req, res, next) => {
   try {
     const id = req.params.id;
-    const herramientaByID = await MatchCard.findById(id);
+    const matchcardByID = await MatchCard.findById(id);
+    console.log(matchcardByID);
     return res.json({
       status: 200,
       message: HTTPSTATUSCODE[200],
-      MatchCard: herramientaByID,
+      MatchCard: matchcardByID,
     });
   } catch (error) {
     return next(error);
@@ -35,26 +44,14 @@ const getMatchCardByID = async (req, res, next) => {
 const getidMatchCheck = async (req, res, next) => {
   try {
     const id = req.params.id;
-    console.log(id);
     const idMatch = req.params.idMatch;
-    console.log(idMatch);
-
-    const herramientaByID = await MatchCard.find({id_users : id, id_user_match : idMatch});
-
-    if(herramientaByID === ""){
-      return res.json({
-        status: 200,
-        message: HTTPSTATUSCODE[200],
-        MatchCard: herramientaByID,
-      });
-    }else{
-      return res.json({
-        status: 404,
-        message: HTTPSTATUSCODE[404],
-        MatchCard: "notfound",
-      });
-    }
-    
+    console.log(id, idMatch);
+    const matchcardByID = await MatchCard.find({id_user: id});
+    return res.json({
+      status: 200,
+      message: HTTPSTATUSCODE[200],
+      MatchCard: matchcardByID,
+    });
   } catch (error) {
     return next(error);
   }
@@ -67,22 +64,13 @@ const getidMatch = async (req, res, next) => {
     const idMatch = req.params.idMatch;
     console.log(idMatch);
 
-    const herramientaByID = await MatchCard.find({id_users : idMatch, id_user_match : id});
+    const matchcardByID = await MatchCard.find({id_users : idMatch});
 
-    if(herramientaByID === ""){
-      return res.json({
-        status: 404,
-        message: HTTPSTATUSCODE[404],
-        MatchCard: "notfound",
-      });
-      
-    }else{
       return res.json({
         status: 200,
         message: HTTPSTATUSCODE[200],
-        MatchCard: herramientaByID,
-      }); 
-    }
+        MatchCard: matchcardByID,
+      });
     
   } catch (error) {
     return next(error);
@@ -111,9 +99,9 @@ const deleteMatchCard = async (req, res, next) => {
     try {
       const { id } = req.params;
   
-      const herramientaBorrado = await MatchCard.findByIdAndDelete(id);
+      const matchcardBorrado = await MatchCard.findByIdAndDelete(id);
   
-      return res.status(200).json(herramientaBorrado);
+      return res.status(200).json(matchcardBorrado);
     } catch (error) {
       return next(error);
     }
