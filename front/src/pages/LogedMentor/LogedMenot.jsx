@@ -72,8 +72,17 @@ const LogedMenot = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Container fluid="md" className="container">
         <Row className="container_Row">
-          <Col className="container_Row_Col"><p>{localStorage.getItem("name")}</p></Col>
+          <Col className="container_Row_Col"><h1>{localStorage.getItem("name")}</h1></Col>
+          <Col className="container_Row_Col"></Col>
           <Col className="container_Row_Col"><p>Maestro</p></Col>
+        </Row>
+        <Row className="container_Row">
+          <Col xs={8} md={8} className="container_Row_Col">
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Descripcion:</Form.Label>
+              <Form.Control as="textarea" rows={3} {...register("description", { value: localStorage.getItem("description")})} />
+            </Form.Group>
+          </Col>
           <Col className="container_Row_Col"><img className="container_Row_Col_imgPerfil" src={localStorage.getItem("imagen")} alt="imagen"></img></Col>
         </Row>
         <Row className="container_Row">
