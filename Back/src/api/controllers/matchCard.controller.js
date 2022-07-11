@@ -32,14 +32,14 @@ const getMatchCardByID = async (req, res, next) => {
   }
 };
 
-const getidMatch = async (req, res, next) => {
+const getidMatchCheck = async (req, res, next) => {
   try {
     const id = req.params.id;
     console.log(id);
     const idMatch = req.params.idMatch;
     console.log(idMatch);
 
-    const herramientaByID = await MatchCard.find({id_users : idMatch, id_user_match : id});
+    const herramientaByID = await MatchCard.find({id_users : id, id_user_match : idMatch});
 
     if(herramientaByID === ""){
       return res.json({
@@ -53,6 +53,35 @@ const getidMatch = async (req, res, next) => {
         message: HTTPSTATUSCODE[404],
         MatchCard: "notfound",
       });
+    }
+    
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const getidMatch = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    console.log(id);
+    const idMatch = req.params.idMatch;
+    console.log(idMatch);
+
+    const herramientaByID = await MatchCard.find({id_users : idMatch, id_user_match : id});
+
+    if(herramientaByID === ""){
+      return res.json({
+        status: 404,
+        message: HTTPSTATUSCODE[404],
+        MatchCard: "notfound",
+      });
+      
+    }else{
+      return res.json({
+        status: 200,
+        message: HTTPSTATUSCODE[200],
+        MatchCard: herramientaByID,
+      }); 
     }
     
   } catch (error) {
@@ -109,4 +138,4 @@ const deleteMatchCard = async (req, res, next) => {
 
   
 
-module.exports = { getAllMatchCard, getMatchCardByID, createMatchCard, patchMatchCard, deleteMatchCard, getidMatch};
+module.exports = { getAllMatchCard, getMatchCardByID, createMatchCard, patchMatchCard, deleteMatchCard, getidMatch, getidMatchCheck};

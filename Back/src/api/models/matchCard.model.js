@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const matchcardchema = new Schema(
   {
     id_users: [
-      { type: Schema.Types.ObjectId, ref: "users", required: true, unique: true },
+      { type: Schema.Types.ObjectId, ref: "users", required: true },
     ],
     id_users_match: [
       { type: Schema.Types.ObjectId, ref: "users", required: true },
