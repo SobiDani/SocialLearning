@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const categoriaschema = new Schema(
+const matchcardchema = new Schema(
   {
     id_users: [
-      { type: Schema.Types.ObjectId, ref: "users", required: true },
+      { type: Schema.Types.ObjectId, ref: "users", required: true, unique: true },
     ],
     id_users_match: [
       { type: Schema.Types.ObjectId, ref: "users", required: true },
@@ -16,6 +16,6 @@ const categoriaschema = new Schema(
   { timestamps: true }
 );
 
-const MatchCard = mongoose.model("MatchCard", categoriaschema);
+const MatchCard = mongoose.model("MatchCard", matchcardchema);
 
 module.exports = MatchCard;

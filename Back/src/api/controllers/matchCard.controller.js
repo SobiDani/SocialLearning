@@ -40,11 +40,21 @@ const getidMatch = async (req, res, next) => {
     console.log(idMatch);
 
     const herramientaByID = await MatchCard.find({id_users : idMatch, id_user_match : id});
-    return res.json({
-      status: 200,
-      message: HTTPSTATUSCODE[200],
-      MatchCard: herramientaByID,
-    });
+
+    if(herramientaByID === ""){
+      return res.json({
+        status: 200,
+        message: HTTPSTATUSCODE[200],
+        MatchCard: herramientaByID,
+      });
+    }else{
+      return res.json({
+        status: 404,
+        message: HTTPSTATUSCODE[404],
+        MatchCard: "notfound",
+      });
+    }
+    
   } catch (error) {
     return next(error);
   }

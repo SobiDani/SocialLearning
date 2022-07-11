@@ -36,7 +36,7 @@ const Dashboard = () => {
         API.get("MatchCard/idMatch/"+localStorage.idUser+"/"+idToDelete).then((res) => {
           console.log(res);
 
-          if (res.status === 200) {
+          if (res.data.status === 200) {
 
             
             const matchRes = { roomid: localStorage.idUser+idToDelete, matchConfirm: true };
