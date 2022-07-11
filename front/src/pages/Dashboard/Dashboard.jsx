@@ -36,23 +36,23 @@ getUsersRol();
 }, []);
 
 useEffect(() => {
-  if (User) {
-      UsersRol()
-  }
-}, [UsersRol])
+    if (User) {
+        UsersRol()
+    }
+  }, [UsersRol])
 
-const[Matches, setMatches] = useState([]);
+  const[Matches, setMatches] = useState([]);
 
-const putMatches = async (matchedUserId) => {
-  try {
-      await API.put('', {
-          UsersRol
-      })
-      putMatches()
-  } catch (err) {
-      console.log(err)
+  const putMatches = async (matchedUserId) => {
+    try {
+        await API.put('', {
+            UsersRol
+        })
+        putMatches()
+    } catch (err) {
+        console.log(err)
+    }
   }
-}
 
 
     const [lastDirection, setLastDirection] = useState()
