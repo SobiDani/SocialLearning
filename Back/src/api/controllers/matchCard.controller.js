@@ -32,6 +32,24 @@ const getMatchCardByID = async (req, res, next) => {
   }
 };
 
+const getidMatch = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    console.log(id);
+    const idMatch = req.params.idMatch;
+    console.log(idMatch);
+
+    const herramientaByID = await MatchCard.find({id_users : idMatch, id_user_match : id});
+    return res.json({
+      status: 200,
+      message: HTTPSTATUSCODE[200],
+      MatchCard: herramientaByID,
+    });
+  } catch (error) {
+    return next(error);
+  }
+};
+
 
 const createMatchCard = async (req, res, next) => {
   try {
@@ -81,4 +99,4 @@ const deleteMatchCard = async (req, res, next) => {
 
   
 
-module.exports = { getAllMatchCard, getMatchCardByID, createMatchCard, patchMatchCard, deleteMatchCard};
+module.exports = { getAllMatchCard, getMatchCardByID, createMatchCard, patchMatchCard, deleteMatchCard, getidMatch};

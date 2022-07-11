@@ -9,8 +9,8 @@ router.post("/login", login);
 router.post("/logout", logout);
 router.get("/", getAllUsers);
 router.get("/:id", getUsersByID);
-router.get("/alumno/:id", getUsersAlumnoByID);
-router.get("/maestro/:id", getUserMaestrosByID);
+router.get("/Alumno/:id", getUsersAlumnoByID);
+router.get("/Maestro/:id", getUserMaestrosByID);
 router.delete("/:id", deleteUsers);
 router.patch("/:id", patchUser);
 
