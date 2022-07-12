@@ -240,6 +240,7 @@ const RegisterForm = () => {
                   <Carousel className="caroselProyecto" >
                     {category.filter(rol => rol.rol === rolUser).map((rol) => (
                       <Carousel.Item key={rol._id}>
+                        <div className="ImagenesCategoria">
                         <Figure>
                           <Figure.Image
                             width={171}
@@ -252,6 +253,8 @@ const RegisterForm = () => {
                             {rol.description}
                           </Figure.Caption>
                         </Figure>
+                        </div>
+                        
                       </Carousel.Item>
                     ))}
                   </Carousel>
