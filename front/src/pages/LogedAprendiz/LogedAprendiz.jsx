@@ -6,10 +6,11 @@ import Form from 'react-bootstrap/Form'
 import Button from '@mui/material/Button';
 import { useForm } from "react-hook-form";
 import { API } from "../../services/api";
+import SendIcon from '@mui/icons-material/Send';
 
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-
+import ButtonLogout from '../../components/Login/ButtonLogout'
 
 import './LogedAprendiz.scss';
 
@@ -128,8 +129,9 @@ const LogedAprendiz = () => {
                 ))}
         </Row>
         <Row className="container_Row">
-          <Col lassName="container_Row_Col">
-            <Button size="large" color="success" type="submit">Guardar</Button>
+          <Col className="container_Row_Col boton">
+            <Button size="large" variant="contained" endIcon={<SendIcon />} type="submit">Guardar</Button>
+            <ButtonLogout>Log out</ButtonLogout>
           </Col>
         </Row>
       </Container>

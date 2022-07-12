@@ -9,6 +9,8 @@ import { API } from "../../services/api";
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import './LogedMenot.scss';
+import ButtonLogout from '../../components/Login/ButtonLogout'
+import SendIcon from '@mui/icons-material/Send';
 
 const LogedMenot = () => {
   const { register, handleSubmit } = useForm();
@@ -129,8 +131,9 @@ const LogedMenot = () => {
           ))}
         </Row>
         <Row className="container_Row">
-          <Col lassName="container_Row_Col">
-            <Button size="large" color="success" type="submit">Guardar</Button>
+          <Col className="container_Row_Col boton">
+            <Button size="large" variant="contained" endIcon={<SendIcon />}  type="submit">Guardar</Button>
+            <ButtonLogout>Log out</ButtonLogout>
           </Col>
         </Row>
       </Container>
