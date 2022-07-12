@@ -127,15 +127,19 @@ const Dashboard = () => {
                 <h2>{character.name}</h2>
                 <ul>
                 {character.id_herramientas.map((herramienta) => 
+<<<<<<< Updated upstream
                   <li><img src={herramienta.ico} alt='herramientas'/></li>)}
+=======
+                  <li><img className='imgHerramienta' src={herramienta.ico} alt='herramientas'/></li>)}
+>>>>>>> Stashed changes
                 </ul>
-                <h2>{character.description}</h2>
+                <h3>{character.description}</h3>
               </div>
             </TinderCard>
           )}
 
           <div className='swipeInfo'>
-            {lastDirection ? <p> You swiped {lastDirection}</p> : <p />}
+            
           </div>
 
         </div>

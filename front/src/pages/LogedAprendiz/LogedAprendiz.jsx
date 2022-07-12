@@ -95,7 +95,7 @@ const LogedAprendiz = () => {
               <Form.Control as="textarea" rows={3} {...register("description", { value: localStorage.getItem("description") })} />
             </Form.Group>
           </Col>
-          <Col className="container_Row_Col"><img className="container_Row_Col_imgPerfil" src={localStorage.getItem("imagen")} alt="imagen"></img></Col>
+          <Col><img className="container_Row_Col_imgPerfil" src={localStorage.getItem("imagen")} alt="imagen"></img></Col>
         </Row>
         <Row className="container_Row">
           <Col className="container_Row_Col">

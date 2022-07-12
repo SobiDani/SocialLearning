@@ -114,8 +114,9 @@ const getUsersAlumnoByID = async (req, res, next) => {
     for (const idHerramientas of UsersByID.id_herramientas) {
 
 
-      const userFind = await User.find({id_herramientas: idHerramientas}).populate("id_categoria");
-      /* console.log(userFind); */
+      const userFind = await User.find({id_herramientas: idHerramientas}).populate("id_categoria").populate("id_herramientas");
+      
+      /*  console.log(userFind);  */
       
       for (const usuario of userFind) {
         
@@ -167,7 +168,7 @@ const getUserMaestrosByID = async (req, res, next) => {
     for (const idHerramientas of UsersByID.id_herramientas) {
 
 
-      const userFind = await User.find({id_herramientas: idHerramientas}).populate("id_categoria");
+      const userFind = await User.find({id_herramientas: idHerramientas}).populate("id_categoria").populate("id_herramientas");
       /* console.log(userFind); */
       
       for (const usuario of userFind) {
