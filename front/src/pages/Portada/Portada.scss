@@ -1,0 +1,55 @@
+
+.PortadaBack{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+     background: rgba(0, 0, 0, 0.7); 
+    /* background: black; */
+    .img1Portada{
+        width: 90%;
+        z-index: 1;
+        position: fixed;
+       margin: auto;
+       top: 0;
+       bottom: 0;
+       left: 0;
+       right: 0; 
+   }
+
+   .rotate{
+    animation: loading 3s linear infinite;
+    @keyframes loading {
+     0% { 
+       transform: rotate(0); 
+     }
+     100% { 
+       transform: rotate(360deg);
+     }
+    }
+   }
+   
+
+    .img2Portada{
+        width: 90%;
+        z-index: 2;
+        position: fixed;
+       margin: auto;
+       top: 0;
+       bottom: 0;
+       left: 0;
+       right: 0; 
+   }
+
+    .img3Portada{
+        width: 95%;
+        z-index: 3;
+        position: fixed;
+       margin: auto;
+       top: 0;
+       bottom: 0;
+       left: 0;
+       right: 5000px; 
+   }
+}

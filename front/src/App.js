@@ -10,6 +10,7 @@ import ChatRoom from './components/Chat/ChatRoom';
 import Chats from './pages/Chats/Chats';
 import Perfil from './components/Perfil/Perfil'
 import Navbar from './components/Navbar/Navbar'
+import Portada from './pages/Portada/Portada';
 
 
 
@@ -23,15 +24,17 @@ function App() {
 
       <Context.Provider value={{ loginStatus, setLoginStatus }}>
         <Router>
-        <Routes>
+        <Portada></Portada>
+          <Routes>
+
             <Route path='/' element={localStorage.getItem("token") ? (<Perfil />) : (<Home />)} />
             <Route path='/login' setLoginStatus={setLoginStatus} element={<Login />} />
             <Route path='/register' element={<Register />} />
             <Route path='/dashboard' element={<Dashboard />} />
-            <Route exact path='/chats/:roomId' element={<ChatRoom/>}/>
+            <Route exact path='/chats/:roomId' element={<ChatRoom />} />
             <Route exact path='/chats' element={<Chats />} />
           </Routes>
-          {localStorage.getItem("token") && <Navbar></Navbar> } 
+          {localStorage.getItem("token") && <Navbar></Navbar>}
         </Router>
       </Context.Provider>
     </div>
