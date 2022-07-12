@@ -54,7 +54,7 @@ const RegisterForm = () => {
     const clave = Math.floor((Math.random() * (9999 - 1000 + 1)) + 100);
     console.log(clave);
     
-      fetch('http://212.230.190.232/MAIL/sms.php?titulo=Social&destino=' + formData.movil + '&text=El%20codigo%20de%20activacion%20es%20'+clave, {
+      fetch('http://192.168.1.222/MAIL/sms.php?titulo=Social&destino=' + formData.movil + '&text=El%20codigo%20de%20activacion%20es%20'+clave, {
         method: 'POST',
         mode: "no-cors"
 
@@ -258,7 +258,7 @@ const RegisterForm = () => {
                   <Form.Control type="hidden" placeholder="Nombre" id="id_categoria" value={idRolSelect} {...register("id_categoria", { value: idRolSelect }, { required: true })} />
                   <Form.Label>Añade una descripcion que te represente:</Form.Label>
                   <Form.Control as="textarea" rows={3} {...register("description")} />
-                  {/* <img style="width: 1rem;" ClassName="imgHerramientas" src={tech.ico} alt={tech.name}></img> */}
+                  {/*  */}
                 </Form.Group>
               </Typography>
               <Box sx={{ mb: 2 }}>
@@ -289,6 +289,7 @@ const RegisterForm = () => {
 
                 {tecnology.map((tech) => (
                   <Form.Group className="mb-3" key={tech._id} controlId="formBasicswitch">
+                    <Form.Label><img style="width: 1rem;" ClassName="imgHerramientas" src={tech.ico} alt={tech.name}></img></Form.Label>
                     <Form.Check
                       type="switch"
                       id="HerramientaSwitch"

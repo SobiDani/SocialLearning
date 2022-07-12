@@ -116,6 +116,7 @@ const LogedMenot = () => {
         <Row className="container_Row">
           {tecnology.map((tech) => (
             <Form.Group className="mb-3" key={tech._id} controlId="formBasicswitch">
+              {/* <img style="width: 1rem;" ClassName="imgHerramientas" src={tech.ico} alt={tech.name}></img> */}
               <Form.Check
                 isValid={tech.hability}
                 type="switch"

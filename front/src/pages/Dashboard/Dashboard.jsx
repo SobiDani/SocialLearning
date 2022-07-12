@@ -3,6 +3,8 @@ import TinderCard from 'react-tinder-card';
 import { useState } from 'react';
 import './Dashboard.scss';
 import { API } from '../../services/api';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 
 
@@ -57,7 +59,12 @@ const Dashboard = () => {
                 console.log("Añado el match que acaba de generar este usuario", res);
 
               });
-              alert("match madafaka");
+              const MySwal = withReactContent(Swal)
+              MySwal.fire({
+                icon: 'success',
+                title: <p>Match Realizado</p>,
+                confirmButtonText: "Cerrar",
+              })
           } else {
             
           }
