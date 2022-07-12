@@ -134,7 +134,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className="registerForm" onSubmit={handleSubmit(onSubmit)}>
       <Box sx={{ maxWidth: 400 }}>
         <Stepper activeStep={activeStep} orientation="vertical">
           <Step>

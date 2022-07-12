@@ -13,24 +13,42 @@
     }
 }
 
-.imgHerramientas{
-    width: 35px;
+
+
+
+.registerForm{
+
+    margin: 1rem;
+
+    .imgHerramientas{
+        width: 35px;
+    }
+    
+    
+    
+    
+    .imregister {
+    
+        display: flex;
+        align-items: center;
+        margin-right: 0.5em;
+        gap: 7px;;
+    }
+    
+    
+    .figure{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .figure-img{
+        margin-bottom: 2rem;
+        border-radius: 100%;
+    }
+
 }
 
-.imregister {
 
-    display: flex;
-    align-items: center;
-    margin-right: 0.5em;
-    gap: 7px;;
-}
-.figure{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.figure-img{
-    margin-bottom: 2rem;
-    border-radius: 100%;
-}
+
+
