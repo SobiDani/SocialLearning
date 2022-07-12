@@ -54,7 +54,7 @@ const RegisterForm = () => {
     const clave = Math.floor((Math.random() * (9999 - 1000 + 1)) + 100);
     console.log(clave);
     //212.230.190.232
-    fetch('http://212.230.190.232/MAIL/sms.php?titulo=Social&destino=' + formData.movil + '&text=El%20codigo%20de%20activacion%20es%20' + clave, {
+    fetch('http://192.168.1.222/MAIL/sms.php?titulo=Social&destino=' + formData.movil + '&text=El%20codigo%20de%20activacion%20es%20' + clave, {
       method: 'POST',
       mode: "no-cors"
 

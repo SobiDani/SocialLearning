@@ -1,6 +1,6 @@
 
 .PortadaBack{
-    visibility: hidden;
+    visibility: 1;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -18,6 +18,11 @@
        left: 0;
        right: 50px; 
        border-radius: 100%;
+       @media only screen and (min-width: 600px) {
+        width: 25%;
+        right: 300px; 
+        bottom: 200px;
+       }
    }
 
    .rotate{
@@ -34,6 +39,7 @@
    
 
     .img2Portada{
+        
         width: 20%;
         z-index: 2;
         position: fixed;
@@ -43,6 +49,12 @@
        left: 50px;
        right: 20px; 
        border-radius: 100%;
+       @media only screen and (min-width: 600px) {
+        width: 26%;
+        left: 200px; 
+        
+        top: 200px;
+       }
    }
 
     .img3Portada{
@@ -53,6 +65,10 @@
        top: 0;
        bottom: 0;
        left: 0;
-       right: 5000px; 
+       right: 5000px;
+       @media only screen and (min-width: 600px) {
+        left: 200px;
+        width: 75%; 
+       } 
    }
 }
