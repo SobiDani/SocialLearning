@@ -27,8 +27,10 @@ const Chats = () => {
  
   return (
     <div className="chat-container">
+    <div className="topConver">
     <h2>CONVERSACIONES</h2>
-    <hr className="stylehr"></hr>
+    </div>
+
     <div className="usuariosChat">
     
     { localStorage.getItem("rol") === "Alumno" && matchCard.filter((usuario) => usuario.id_users === localStorage.getItem("idUser")).map((usuario)=> (

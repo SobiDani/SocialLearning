@@ -8,6 +8,7 @@
     flex-direction: column;
     margin: 16px;
     margin-bottom: 6em;
+    gap: 10px;
 }
 
 .room-name {
@@ -19,7 +20,10 @@
     min-height: 100px;
     overflow: auto;
     border: 1px solid black;
-    border-radius: 7px 7px 0 0;
+    border-radius: 70px;
+    background-color: #eff9ff;
+    opacity: 1;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #eff9ff 23px ), repeating-linear-gradient( #ced0ff55, #ced0ff );
 }
 
 .messages-list {
@@ -28,7 +32,7 @@
 }
 
 .new-message-input-field {
-    height: 200px;
+    height: 100px;
     max-height: 50%;
     font-size: 20px;
     padding: 8px 12px;
@@ -58,11 +62,13 @@
     font-size: 28px;
     font-weight: 600;
     color: white;
-    background: #31a24c;
-    padding: 24px 12px;
+    background: #74beff;
+    padding: 20px 10px;
     border: none;
+    border-radius: 20px;
 }
 
 .messages-container, .new-message-input-field, .send-message-button {
     border-color: #9a9a9a;
+    border-radius: 30px;
 }

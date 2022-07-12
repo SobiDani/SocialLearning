@@ -1,4 +1,10 @@
 body{
-    background-color: #f5fdff;
-    background-image: url("https://www.transparenttextures.com/patterns/diagonal-striped-brick.png");
+    background-color: #eff9ff;
+    background-image:  radial-gradient(#444cf7 1.1500000000000001px, transparent 1.1500000000000001px), radial-gradient(#444cf7 1.1500000000000001px, #eff9ff 1.1500000000000001px);
+    background-size: 46px 46px;
+    background-position: 0 0,23px 23px;
+}
+
+*{
+    font-family: 'Montserrat', sans-serif;
 }
