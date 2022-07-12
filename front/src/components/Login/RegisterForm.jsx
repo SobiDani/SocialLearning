@@ -291,7 +291,6 @@ const RegisterForm = () => {
                   
                   
                   <Form.Group className="mb-3" key={tech._id} controlId="formBasicswitch">
-                     <div className="imregister"><img  className="imgHerramientas" src={tech.ico} alt={tech.name}></img> 
                     <Form.Label><img ClassName="imgHerramientas" src={tech.ico} alt={tech.name}></img></Form.Label>
                     <Form.Check
                       type="switch"
@@ -300,8 +299,7 @@ const RegisterForm = () => {
                       value={tech._id}
                       {...register("id_herramientas")}
                     />
-                    </div>
-                    {/* <img style="width: 1rem;" ClassName="imgHerramientas" src={tech.ico} alt={tech.name}></img> */}
+
                   </Form.Group>
                   
                 ))}

@@ -90,7 +90,7 @@ const getAllUsers = async (req, res, next) => {
 const getUsersByID = async (req, res, next) => {
   try {
     const id = req.params.id;
-    const UsersByID = await User.findById(id).populate("id_herramientas").populate("id_categoria");
+    const UsersByID = await User.findById(id);
     return res.json({
       status: 200,
       message: HTTPSTATUSCODE[200],
@@ -104,7 +104,8 @@ const getUsersByID = async (req, res, next) => {
 const getUsersAlumnoByID = async (req, res, next) => {
   try {
     const id = req.params.id;
-    const UsersByID = await User.findById(id).populate("id_herramientas").populate("id_categoria");
+    const UsersByID = await User.findById(id);
+    /* const userFind = await User.find(id_herramientas=UsersByID.id_herramientas); */
     
     const userName = [];
     const user = [];
@@ -113,7 +114,7 @@ const getUsersAlumnoByID = async (req, res, next) => {
     for (const idHerramientas of UsersByID.id_herramientas) {
 
 
-      const userFind = await User.find({id_herramientas: idHerramientas}).populate("id_herramientas").populate("id_categoria");
+      const userFind = await User.find({id_herramientas: idHerramientas}).populate("id_categoria");
       /* console.log(userFind); */
       
       for (const usuario of userFind) {
@@ -156,7 +157,7 @@ const getUsersAlumnoByID = async (req, res, next) => {
 const getUserMaestrosByID = async (req, res, next) => {
   try {
     const id = req.params.id;
-    const UsersByID = await User.findById(id).populate("id_herramientas").populate("id_categoria");
+    const UsersByID = await User.findById(id);
     /* const userFind = await User.find(id_herramientas=UsersByID.id_herramientas); */
     
     const userName = [];
@@ -166,7 +167,7 @@ const getUserMaestrosByID = async (req, res, next) => {
     for (const idHerramientas of UsersByID.id_herramientas) {
 
 
-      const userFind = await User.find({id_herramientas: idHerramientas}).populate("id_herramientas").populate("id_categoria");
+      const userFind = await User.find({id_herramientas: idHerramientas}).populate("id_categoria");
       /* console.log(userFind); */
       
       for (const usuario of userFind) {
