@@ -17,6 +17,7 @@ import { Carousel } from 'react-bootstrap';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
+
 //STEP
 const RegisterForm = () => {
   const navigate = useNavigate();
@@ -288,8 +289,10 @@ const RegisterForm = () => {
               <Typography>
 
                 {tecnology.map((tech) => (
+                  
+                  
                   <Form.Group className="mb-3" key={tech._id} controlId="formBasicswitch">
-                    <Form.Label><img style="width: 1rem;" ClassName="imgHerramientas" src={tech.ico} alt={tech.name}></img></Form.Label>
+                     <div className="imregister"><img  className="imgHerramientas" src={tech.ico} alt={tech.name}></img> 
                     <Form.Check
                       type="switch"
                       id="HerramientaSwitch"
@@ -297,8 +300,10 @@ const RegisterForm = () => {
                       value={tech._id}
                       {...register("id_herramientas")}
                     />
+                    </div>
                     {/* <img style="width: 1rem;" ClassName="imgHerramientas" src={tech.ico} alt={tech.name}></img> */}
                   </Form.Group>
+                  
                 ))}
 
 
