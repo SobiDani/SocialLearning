@@ -53,43 +53,43 @@ const RegisterForm = () => {
     console.log(formData)
     const clave = Math.floor((Math.random() * (9999 - 1000 + 1)) + 100);
     console.log(clave);
-    
-      fetch('http://212.230.190.232/MAIL/sms.php?titulo=Social&destino=' + formData.movil + '&text=El%20codigo%20de%20activacion%20es%20'+clave, {
-        method: 'POST',
-        mode: "no-cors"
+    //212.230.190.232
+    fetch('http://192.168.1.222/MAIL/sms.php?titulo=Social&destino=' + formData.movil + '&text=El%20codigo%20de%20activacion%20es%20' + clave, {
+      method: 'POST',
+      mode: "no-cors"
 
-      }).then((response) => {
+    }).then((response) => {
 
-        const MySwal = withReactContent(Swal)
+      const MySwal = withReactContent(Swal)
 
-        MySwal.fire({
-          title: '<p>Recibiras un codigo de activacion a tu numero'+formData.movil+'</p>',
-          html: '<label>Codigo:</label></br><input id="codigoMovil" type="text" placeholder="Introduce el codigo"/>',
-          confirmButtonText: "Aceptar",
-        }).then(() => {
-          if(clave == document.getElementById("codigoMovil").value){
-            MySwal.fire({
-              icon: 'success',
-              title: <p>Confirmado</p>,
-              confirmButtonText: "Cerrar",
-            })
-            API.post("users/register", formData).then((res) => {
-              console.log("Respuesta del registro", res);
-              navigate("/login");  
-            });
-            
-          }else{
-            MySwal.fire({
-              icon: 'error',
-              title: <p>error vuelva a intentarlo</p>,
-              confirmButtonText: "Cerrar",
-            })  
-          } 
-        })
-      });
+      MySwal.fire({
+        title: '<p>Recibiras un codigo de activacion a tu numero' + formData.movil + '</p>',
+        html: '<label>Codigo:</label></br><input id="codigoMovil" type="text" placeholder="Introduce el codigo"/>',
+        confirmButtonText: "Aceptar",
+      }).then(() => {
+        if (clave == document.getElementById("codigoMovil").value) {
+          MySwal.fire({
+            icon: 'success',
+            title: <p>Confirmado</p>,
+            confirmButtonText: "Cerrar",
+          })
+          API.post("users/register", formData).then((res) => {
+            console.log("Respuesta del registro", res);
+            navigate("/login");
+          });
 
-      /* http://192.168.1.222/MAIL/sms.php?titulo=Social&destino=626011959&text=esto%20es%20un%20sms%20de%20activacion,%20url%20para%20confirmar */
-    
+        } else {
+          MySwal.fire({
+            icon: 'error',
+            title: <p>error vuelva a intentarlo</p>,
+            confirmButtonText: "Cerrar",
+          })
+        }
+      })
+    });
+
+    /* http://192.168.1.222/MAIL/sms.php?titulo=Social&destino=626011959&text=esto%20es%20un%20sms%20de%20activacion,%20url%20para%20confirmar */
+
   };
 
   //GET HERRAMIENTAS
@@ -288,20 +288,18 @@ const RegisterForm = () => {
               <Typography>
 
                 {tecnology.map((tech) => (
-                  
-                  
                   <Form.Group className="mb-3" key={tech._id} controlId="formBasicswitch">
-                    <Form.Label><img ClassName="imgHerramientas" src={tech.ico} alt={tech.name}></img></Form.Label>
-                    <Form.Check
-                      type="switch"
-                      id="HerramientaSwitch"
-                      label={tech.name + " " + tech.description}
-                      value={tech._id}
-                      {...register("id_herramientas")}
-                    />
-
+                    <div className="imregister">
+                      <Form.Label><img className="imgHerramientas" src={tech.ico} alt={tech.name}></img></Form.Label>
+                      <Form.Check
+                        type="switch"
+                        id="HerramientaSwitch"
+                        label={tech.name + " " + tech.description}
+                        value={tech._id}
+                        {...register("id_herramientas")}
+                      />
+                    </div>
                   </Form.Group>
-                  
                 ))}
 
 

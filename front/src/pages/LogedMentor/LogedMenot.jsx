@@ -10,6 +10,10 @@ import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import './LogedMenot.scss';
 
+import SendIcon from '@mui/icons-material/Send';
+import ButtonLogout from '../../components/Login/ButtonLogout'
+
+
 const LogedMenot = () => {
   const { register, handleSubmit } = useForm();
 
@@ -85,7 +89,7 @@ const LogedMenot = () => {
           <Col xs={8} md={8} className="container_Row_Col">
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Descripcion:</Form.Label>
-              <Form.Control as="textarea" rows={3} {...register("description", { value: localStorage.getItem("description")})} />
+              <Form.Control as="textarea" rows={3} {...register("description", { value: localStorage.getItem("description") })} />
             </Form.Group>
           </Col>
           <Col className="container_Row_Col"><img className="container_Row_Col_imgPerfil" src={localStorage.getItem("imagen")} alt="imagen"></img></Col>
@@ -118,7 +122,7 @@ const LogedMenot = () => {
           <Col className="container_Row_Col">
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Imagen:</Form.Label>
-              <Form.Control type="text" placeholder="Enter Image" {...register("img", {value: localStorage.getItem("imagen")}, { required: false })} />
+              <Form.Control type="text" placeholder="Enter Image" {...register("img", { value: localStorage.getItem("imagen") }, { required: false })} />
             </Form.Group>
           </Col>
         </Row>
@@ -138,8 +142,9 @@ const LogedMenot = () => {
           ))}
         </Row>
         <Row className="container_Row">
-          <Col lassName="container_Row_Col">
-            <Button size="large" color="success" type="submit">Guardar</Button>
+          <Col className="container_Row_Col boton">
+            <Button size="large" variant="contained" endIcon={<SendIcon />} type="submit">Guardar</Button>
+            <ButtonLogout>Log out</ButtonLogout>
           </Col>
         </Row>
       </Container>

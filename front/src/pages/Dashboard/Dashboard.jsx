@@ -127,7 +127,7 @@ const Dashboard = () => {
                 <h2>{character.name}</h2>
                 <ul>
                 {character.id_herramientas.map((herramienta) => 
-                  <li><img src='{herramienta.ico}' alt='herramientas'/></li>)}
+                  <li><img src={herramienta.ico} alt='herramientas'/></li>)}
                 </ul>
                 <h2>{character.description}</h2>
               </div>
