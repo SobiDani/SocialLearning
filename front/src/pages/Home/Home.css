@@ -1,0 +1,102 @@
+.HomePage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.HomePage .LogoHome {
+  margin: 7em 0 2em 0;
+  width: 70%;
+}
+
+.HomePage .derechaHome {
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.HomePage ul {
+  width: 50%;
+}
+
+.HomePage ul li {
+  margin-bottom: 2em;
+  text-align: center;
+  border: 1px solid #68bbf7;
+  border-radius: 20px;
+}
+
+.HomePage ul li a {
+  font-weight: bolder;
+  font-size: 1.5em;
+}
+
+.HomePage ul li:hover {
+  background-color: #68bbf7;
+}
+
+.HomePage ul li:hover a {
+  color: white;
+}
+
+.HomePage p {
+  margin-top: 2em;
+  color: #68bbf7;
+  width: 13.9em;
+  text-align: center;
+}
+
+@media (min-width: 660px) {
+  .HomePage {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 100vw;
+    height: 100vh;
+  }
+  .HomePage .LogoHome {
+    width: 28em;
+  }
+  .HomePage ul {
+    width: 20em;
+  }
+  .HomePage .derechaHome {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 30vw;
+  }
+}
+/*# sourceMappingURL=Home.css.map */

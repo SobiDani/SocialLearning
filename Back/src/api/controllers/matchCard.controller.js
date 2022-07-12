@@ -14,7 +14,12 @@ function isEmptyObject(obj) {
 
 const getAllMatchCard = async (req, res, next) => {
   try {
-    const allMatchCard = await MatchCard.find();
+    const allMatchCard = await MatchCard.find().populate({
+      path : 'id_users_match',
+      populate : {
+        path : 'id_categoria'
+      }});
+
     return res.json({
       status: 200,
       message: HTTPSTATUSCODE[200],

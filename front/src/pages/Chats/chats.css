@@ -1,0 +1,32 @@
+.chat-container h2 {
+  text-align: center;
+  margin-top: 1em;
+  font-weight: bold;
+  text-shadow: 2px 0 #0e62e9, -2px 0 #0e62e9, 0 2px #0e62e9, 0 -2px #0e62e9, 1px 1px #0e62e9, -1px -1px #0e62e9, 1px -1px #0e62e9, -1px 1px #0e62e9;
+  color: white;
+}
+
+.chat-container .usuariosChat {
+  margin-bottom: 6em;
+}
+
+.chat-container .usuariosChat .usuariosChatimagen {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 5px rgba(113, 177, 255, 0.718) double;
+  padding: 1em;
+}
+
+.chat-container .usuariosChat .usuariosChatimagen p {
+  text-align: center;
+}
+
+.chat-container .usuariosChat img {
+  width: 17%;
+  margin-right: 2em;
+}
+/*# sourceMappingURL=chats.css.map */

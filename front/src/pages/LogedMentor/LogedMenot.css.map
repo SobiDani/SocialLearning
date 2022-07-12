@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAGa,AAAD,4BAAW,CAAA;EACP,KAAK,EAAE,IAAI;EACX,aAAa,EAAE,IAAI;EACnB,MAAM,EAAE,IAAI;CACf",
+    "sources": [
+        "LogedMenot.scss"
+    ],
+    "names": [],
+    "file": "LogedMenot.css"
+}

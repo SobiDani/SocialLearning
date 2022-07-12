@@ -1,0 +1,67 @@
+.dashboard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.dashboard .swipe-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.swipe {
+  position: absolute;
+}
+
+.dashboard.cardContainer {
+  background-color: black;
+  background-size: 500px;
+  width: 100vw;
+}
+
+.card {
+  position: relative;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.3);
+  width: 90vw;
+  height: 70vh;
+  border-radius: 30px;
+  background-size: cover;
+  background-position: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin: 5em 1.5em 0 1.5em;
+}
+
+.card p, .card h3, .card h2 {
+  color: #fff;
+  text-shadow: 0px 2px 10px #000000;
+  text-align: center;
+}
+
+.cardContent {
+  width: 100%;
+}
+
+.dashboard .swipe-info {
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+}
+/*# sourceMappingURL=Dashboard.css.map */
