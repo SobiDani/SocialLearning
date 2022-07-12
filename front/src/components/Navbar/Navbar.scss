@@ -1,6 +1,6 @@
 .Navbar{
     display: flex;
-    position: fixed;
+    position:fixed;
     justify-content: space-around;
     bottom: 0;
     border-top: 2px solid #63b5f6;
@@ -11,11 +11,16 @@
 
 
     li{
-        margin: 0.5em 0;
-    width: 17%;
+        margin: 0.6em 0;
+        width: 15%;
+        
         img{
-            width: 100%;
+            width: 25%;
+            min-width: 35px;
+            
+            
         }
     }
 
+        
 }
