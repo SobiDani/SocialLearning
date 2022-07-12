@@ -48,14 +48,13 @@ const RegisterForm = () => {
   const onSubmit = (formData) => {
 
 
-    /* alert("holaaa"); */
     formData.id_categoria = idRolSelect;
 
     console.log(formData)
-    const clave = "14323";
-    API.post("users/register", formData).then((res) => {
-      console.log(res);
-      fetch('http://212.230.190.232/MAIL/sms.php?titulo=Social&destino=' + formData.movil + '&text=El%20codigo%20de%20activacion%20es%20'+clave, {
+    const clave = Math.floor((Math.random() * (9999 - 1000 + 1)) + 100);
+    console.log(clave);
+    
+      fetch('http://192.168.1.222/MAIL/sms.php?titulo=Social&destino=' + formData.movil + '&text=El%20codigo%20de%20activacion%20es%20'+clave, {
         method: 'POST',
         mode: "no-cors"
 
@@ -65,16 +64,20 @@ const RegisterForm = () => {
 
         MySwal.fire({
           title: '<p>Recibiras un codigo de activacion a tu numero'+formData.movil+'</p>',
-          html: '<label>Codigo:</label><input id="codigoMovil" type="text" placeholder="Introduce el codigo"/>',
+          html: '<label>Codigo:</label></br><input id="codigoMovil" type="text" placeholder="Introduce el codigo"/>',
           confirmButtonText: "Aceptar",
         }).then(() => {
-          if(clave === document.getElementById("codigoMovil").value){
+          if(clave == document.getElementById("codigoMovil").value){
             MySwal.fire({
               icon: 'success',
               title: <p>Confirmado</p>,
               confirmButtonText: "Cerrar",
             })
-            navigate("/login");
+            API.post("users/register", formData).then((res) => {
+              console.log("Respuesta del registro", res);
+              navigate("/login");  
+            });
+            
           }else{
             MySwal.fire({
               icon: 'error',
@@ -83,10 +86,10 @@ const RegisterForm = () => {
             })  
           } 
         })
-      })
+      });
 
       /* http://192.168.1.222/MAIL/sms.php?titulo=Social&destino=626011959&text=esto%20es%20un%20sms%20de%20activacion,%20url%20para%20confirmar */
-    });
+    
   };
 
   //GET HERRAMIENTAS
