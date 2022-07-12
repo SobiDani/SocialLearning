@@ -31,7 +31,7 @@ const Chats = () => {
     <hr className="stylehr"></hr>
     <div className="usuariosChat">
     
-    { localStorage.getItem("rol") === "Alumno" && matchCard.filter((usuario) => usuario.id_users_match.rol === "Maestro").map((usuario)=> (
+    { localStorage.getItem("rol") === "Alumno" && matchCard.filter((usuario) => usuario.id_users === localStorage.getItem("idUser")).map((usuario)=> (
         <>
 
         {usuario.matchConfirm?
@@ -45,7 +45,7 @@ const Chats = () => {
     </>
       ))}
 
-      { localStorage.getItem("rol") === "Maestro" && matchCard.filter((usuario) => usuario.id_users_match.rol === "Alumno").map((usuario)=> (
+      { localStorage.getItem("rol") === "Maestro" && matchCard.filter((usuario) => usuario.id_users === localStorage.getItem("idUser")).map((usuario)=> (
         <>
 
         {usuario.matchConfirm?
