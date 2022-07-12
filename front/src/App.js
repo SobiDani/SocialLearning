@@ -23,7 +23,6 @@ function App() {
 
       <Context.Provider value={{ loginStatus, setLoginStatus }}>
         <Router>
-        {localStorage.getItem("token") && <Navbar></Navbar> } 
         <Routes>
             <Route path='/' element={localStorage.getItem("token") ? (<Perfil />) : (<Home />)} />
             <Route path='/login' setLoginStatus={setLoginStatus} element={<Login />} />
@@ -32,6 +31,7 @@ function App() {
             <Route exact path='/chats/:roomId' element={<ChatRoom/>}/>
             <Route exact path='/chats' element={<Chats />} />
           </Routes>
+          {localStorage.getItem("token") && <Navbar></Navbar> } 
         </Router>
       </Context.Provider>
     </div>

@@ -39,14 +39,16 @@ const Dashboard = () => {
         if (res.data.MatchCard.length !== 0) {
           console.log("si tengo contenido es que este usuario tiene match");
           let confirmacionPost = false;
+          let idMatchConfirm;
           for (const matchFind of res.data.MatchCard) {
             if (matchFind.id_users === idToDelete) {
               confirmacionPost = true;
+              idMatchConfirm = matchFind._id;
             }
           }
-          if (confirmacionPost) { } else {
+          if (confirmacionPost) { 
             const matchRes = { roomid: localStorage.idUser + idToDelete, matchConfirm: true };
-            API.patch("MatchCard/" + res.MatchCard._id, matchRes).then((res) => {
+            API.patch("MatchCard/" + idMatchConfirm, matchRes).then((res) => {
               console.log("Se actualiza la linea y se genera el MATCH", res);
             });
             const match = { id_users: localStorage.idUser, id_users_match: idToDelete, roomid: localStorage.idUser + idToDelete, matchConfirm: true };
@@ -55,10 +57,13 @@ const Dashboard = () => {
                 console.log("Añado el match que acaba de generar este usuario", res);
 
               });
+              alert("match madafaka");
+          } else {
+            
           }
         
         } else {
-          
+
           API.get("MatchCard/idMatchCheck/" + localStorage.idUser + "/" + idToDelete).then((res) => {
             console.log(res.data.MatchCard);
             if (res.data.MatchCard.length === 0) {

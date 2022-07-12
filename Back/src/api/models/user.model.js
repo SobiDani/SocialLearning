@@ -14,6 +14,8 @@ const UserSchema = new Schema({
   description: { type: String, trim: true, required: false },
   img: { type: String, trim: true, required: false },
   token: { type: String, trim: true, required: false },
+  movil: { type: String, trim: true, required: true },
+  activo: { type: Boolean, default: 0, trim: true, required: true},
   id_herramientas: [
     { type: Schema.Types.ObjectId, ref: "Herramientas", required: false },
   ],

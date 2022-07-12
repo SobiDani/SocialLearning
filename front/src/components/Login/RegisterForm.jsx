@@ -47,14 +47,45 @@ const RegisterForm = () => {
 
   const onSubmit = (formData) => {
 
-    
+
     /* alert("holaaa"); */
     formData.id_categoria = idRolSelect;
-    
+
     console.log(formData)
+    const clave = "14323";
     API.post("users/register", formData).then((res) => {
       console.log(res);
-      navigate("/login");
+      fetch('http://212.230.190.232/MAIL/sms.php?titulo=Social&destino=' + formData.movil + '&text=El%20codigo%20de%20activacion%20es%20'+clave, {
+        method: 'POST',
+        mode: "no-cors"
+
+      }).then((response) => {
+
+        const MySwal = withReactContent(Swal)
+
+        MySwal.fire({
+          title: '<p>Recibiras un codigo de activacion a tu numero'+formData.movil+'</p>',
+          html: '<label>Codigo:</label><input id="codigoMovil" type="text" placeholder="Introduce el codigo"/>',
+          confirmButtonText: "Aceptar",
+        }).then(() => {
+          if(clave === document.getElementById("codigoMovil").value){
+            MySwal.fire({
+              icon: 'success',
+              title: <p>Confirmado</p>,
+              confirmButtonText: "Cerrar",
+            })
+            navigate("/login");
+          }else{
+            MySwal.fire({
+              icon: 'error',
+              title: <p>error vuelva a intentarlo</p>,
+              confirmButtonText: "Cerrar",
+            })  
+          } 
+        })
+      })
+
+      /* http://192.168.1.222/MAIL/sms.php?titulo=Social&destino=626011959&text=esto%20es%20un%20sms%20de%20activacion,%20url%20para%20confirmar */
     });
   };
 
@@ -92,11 +123,11 @@ const RegisterForm = () => {
     MySwal.fire({
       icon: 'success',
       title: <p>Seleccion {rolUser}</p>,
-      html:<p>Seleccion Realizada</p>,
+      html: <p>Seleccion Realizada</p>,
       confirmButtonText: "Cerrar",
     })
     setIdRolSelect(idselect);
-    
+
   };
 
   return (
@@ -121,6 +152,10 @@ const RegisterForm = () => {
                 <Form.Group className="mb-3" controlId="formBasicText">
                   <Form.Label>Nombre:</Form.Label>
                   <Form.Control type="text" placeholder="Nombre" {...register("name", { required: true })} />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicText">
+                  <Form.Label>Número Movil:</Form.Label>
+                  <Form.Control type="text" placeholder="Movil" {...register("movil", { required: true })} />
                 </Form.Group>
               </Typography>
               <Box sx={{ mb: 2 }}>
@@ -217,7 +252,7 @@ const RegisterForm = () => {
                       </Carousel.Item>
                     ))}
                   </Carousel>
-                  <Form.Control type="hidden" placeholder="Nombre"  id="id_categoria" value={idRolSelect} {...register("id_categoria", { value: idRolSelect}, { required: true })} />
+                  <Form.Control type="hidden" placeholder="Nombre" id="id_categoria" value={idRolSelect} {...register("id_categoria", { value: idRolSelect }, { required: true })} />
                   <Form.Label>Añade una descripcion que te represente:</Form.Label>
                   <Form.Control as="textarea" rows={3} {...register("description")} />
                   {/* <img style="width: 1rem;" ClassName="imgHerramientas" src={tech.ico} alt={tech.name}></img> */}
@@ -225,7 +260,7 @@ const RegisterForm = () => {
               </Typography>
               <Box sx={{ mb: 2 }}>
                 <div>
-                <Button
+                  <Button
                     variant="contained"
                     onClick={handleNext}
                     sx={{ mt: 1, mr: 1 }}
@@ -280,7 +315,7 @@ const RegisterForm = () => {
           </Step>
         </Stepper>
         <Paper square elevation={0} sx={{ p: 3 }}>
-          {indexStep === 4 ? (<Button type="submit">Registrar</Button>) : (<Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>Reset</Button>)}
+          {indexStep === 4 ? (<Button type="submit">Registrar</Button>) : (<></>)}
 
 
         </Paper>
