@@ -16,13 +16,21 @@ const LoginForm = () => {
     
     console.log(formData);
     API.post("users/login", formData).then((res) => {
+
       console.log(res);
+      let imagenLogin;
+      if(res.data.user.img === undefined){imagenLogin = res.data.user.id_categoria.imagen}else{imagenLogin = res.data.user.img}
+
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", res.data.user.username);
       localStorage.setItem("name", res.data.user.name);
       localStorage.setItem("rol", res.data.user.rol);
       localStorage.setItem("idUser", res.data.user._id);
-      localStorage.setItem("imagen", res.data.user.img);
+
+
+      localStorage.setItem("imagen", imagenLogin);
+
+
       localStorage.setItem("herramientas", JSON.stringify(res.data.user.id_herramientas));
       localStorage.setItem("description", res.data.user.description);
 
