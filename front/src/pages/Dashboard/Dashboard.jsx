@@ -16,11 +16,11 @@ const Dashboard = () => {
 
     const getUsers = async () => {
       const usersAPI = await API.get(`users/${localStorage.rol}/${localStorage.idUser}`);
-      /* console.log(usersAPI); */
       setUser(usersAPI.data.Users);
-
+      console.log(usersAPI.data.Users);
     };
     getUsers();
+    
   }, []);
 
 
@@ -122,11 +122,14 @@ const Dashboard = () => {
 
           {User.filter(character => character.rol !== localStorage.rol).map((character) =>
             <TinderCard className='swipe' key={character._id} onSwipe={(dir) => swiped(dir, character._id)} onCardLeftScreen={() => outOfFrame(character._id)}>
-              <div style={{ backgroundImage: 'url(' + character.id_categoria.imagen + ')' }} className='card'>
+              <div style={{ backgroundImage: 'url(' + character.img + ')' }} className='card'>
 
                 <h2>{character.name}</h2>
-                <h3>{character.username}</h3>
-                <h2>{character._id}</h2>
+                <ul>
+                {character.id_herramientas.map((herramienta) => 
+                  <li><img src='{herramienta.ico}' alt='herramientas'/></li>)}
+                </ul>
+                <h2>{character.description}</h2>
               </div>
             </TinderCard>
           )}

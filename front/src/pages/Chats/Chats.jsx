@@ -33,7 +33,7 @@ const Chats = () => {
         {usuario.matchConfirm?
       <figure  key={usuario._id}>
        <Link className="usuariosChatimagen" to={generatePath('/chats/:id', { id: usuario.roomid })}> 
-        <img src={usuario.id_users_match.id_categoria.imagen} alt="test"/> 
+        <img src={usuario.id_users_match.img} alt="test"/> 
       <p>{usuario.id_users_match.name}</p>
       </Link>
       </figure>
@@ -47,7 +47,7 @@ const Chats = () => {
         {usuario.matchConfirm?
       <figure  key={usuario._id}>
        <Link className="usuariosChatimagen" to={generatePath('/chats/:id', { id: usuario.roomid })}> 
-        <img src={usuario.id_users_match.id_categoria.imagen} alt="test"/> 
+        <img src={usuario.id_users_match.img} alt="test"/> 
       <p>{usuario.id_users_match.name}</p>
       </Link>
       </figure>

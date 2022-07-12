@@ -22,7 +22,7 @@ const LoginForm = () => {
       localStorage.setItem("name", res.data.user.name);
       localStorage.setItem("rol", res.data.user.rol);
       localStorage.setItem("idUser", res.data.user._id);
-      localStorage.setItem("imagen", res.data.user.id_categoria.imagen);
+      localStorage.setItem("imagen", res.data.user.img);
       localStorage.setItem("herramientas", JSON.stringify(res.data.user.id_herramientas));
       localStorage.setItem("description", res.data.user.description);
 
@@ -30,11 +30,8 @@ const LoginForm = () => {
       setLoginStatus(res.data.token);
       navigate("/");
     });
-
-   
-
-    
   };
+  
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
 

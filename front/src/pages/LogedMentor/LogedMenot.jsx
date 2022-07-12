@@ -17,10 +17,11 @@ const LogedMenot = () => {
     console.log(formData)
     API.patch("users/" + localStorage.getItem("idUser"), formData).then((res) => {
       console.log(res);
-      /* localStorage.setItem("user", formData.username);
+      localStorage.setItem("user", formData.username);
       localStorage.setItem("name", formData.name);
       localStorage.setItem("herramientas", JSON.stringify(formData.id_herramientas));
-      localStorage.setItem("description", formData.description); */
+      localStorage.setItem("description", formData.description);
+      localStorage.setItem("imagen", formData.img);
       const MySwal = withReactContent(Swal)
       MySwal.fire({
         icon: 'success',
@@ -93,7 +94,7 @@ const LogedMenot = () => {
           <Col className="container_Row_Col">
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email:</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" {...register("username", { value: localStorage.getItem("username") }, { required: true })} />
+              <Form.Control type="email" placeholder="Enter email" {...register("username", { value: localStorage.getItem("user") }, { required: true })} />
             </Form.Group>
           </Col>
         </Row>
@@ -110,6 +111,14 @@ const LogedMenot = () => {
             <Form.Group className="mb-3" controlId="formBasicText">
               <Form.Label>Nombre:</Form.Label>
               <Form.Control type="text" placeholder="Nombre"  {...register("name", { value: localStorage.getItem("name") }, { required: true })} />
+            </Form.Group>
+          </Col>
+        </Row>
+        <Row className="container_Row">
+          <Col className="container_Row_Col">
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Imagen:</Form.Label>
+              <Form.Control type="text" placeholder="Enter Image" {...register("img", {value: localStorage.getItem("imagen")}, { required: false })} />
             </Form.Group>
           </Col>
         </Row>
