@@ -127,11 +127,8 @@ const Dashboard = () => {
                 <h2>{character.name}</h2>
                 <ul>
                 {character.id_herramientas.map((herramienta) => 
-<<<<<<< Updated upstream
-                  <li><img src={herramienta.ico} alt='herramientas'/></li>)}
-=======
-                  <li><img className='imgHerramienta' src={herramienta.ico} alt='herramientas'/></li>)}
->>>>>>> Stashed changes
+                  <li><img className='imgHerramienta' src={herramienta.ico} alt='herramientas'/></li>
+                )}
                 </ul>
                 <h3>{character.description}</h3>
               </div>
