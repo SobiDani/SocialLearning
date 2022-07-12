@@ -1,5 +1,6 @@
 
 .PortadaBack{
+    visibility: hidden;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -8,14 +9,15 @@
      background: rgba(0, 0, 0, 0.7); 
     /* background: black; */
     .img1Portada{
-        width: 90%;
+        width: 30%;
         z-index: 1;
         position: fixed;
        margin: auto;
        top: 0;
-       bottom: 0;
+       bottom: 45px;
        left: 0;
-       right: 0; 
+       right: 50px; 
+       border-radius: 100%;
    }
 
    .rotate{
@@ -32,14 +34,15 @@
    
 
     .img2Portada{
-        width: 90%;
+        width: 20%;
         z-index: 2;
         position: fixed;
        margin: auto;
-       top: 0;
+       top: 60px;
        bottom: 0;
-       left: 0;
-       right: 0; 
+       left: 50px;
+       right: 20px; 
+       border-radius: 100%;
    }
 
     .img3Portada{
